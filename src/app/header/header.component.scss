@@ -1,0 +1,40 @@
+$color1-title: #BF0014;
+$color2-title: #DF9800;
+
+h1 {
+  font-weight: bold;
+  font-size: 2em;
+
+  &:nth-of-type(1) {
+    color: $color1-title;
+  }
+
+  &:nth-of-type(2) {
+    color: $color2-title;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  li a {
+    display: block;
+    color: black;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  li a:hover:not(.active) {
+    background-color: $color2-title;
+    border-radius: 1em;
+  }
+}

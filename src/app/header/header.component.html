@@ -1,3 +1,23 @@
-<p>
-  header works!
-</p>
+<header>
+  <mat-toolbar class="flex-row-container">
+    <div class="flex-row-container">
+      <a href="index.html" title="Le Gourmand" ng-click="$event.preventDefault()" routerLink="">
+        <img src="/assets/images/logo.png" width="64"></a>
+      <div class="web-title flex-row-container">
+        <h1>Le</h1>
+        <h1>Gourmand</h1>
+      </div>
+    </div>
+    <ul>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signup">Créer un compte<mat-icon>person_add</mat-icon></a>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isAuth">
+        <a routerLink="auth/signin">Connexion<mat-icon>person</mat-icon></a>
+      </li>
+      <li>
+        <a (click)="onSignOut()" style="cursor:pointer" *ngIf="isAuth">Déconnexion<mat-icon>person_outline</mat-icon></a>
+      </li>
+    </ul>
+  </mat-toolbar>
+</header>
