@@ -2,16 +2,46 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-body{
+body {
   font-family: Georgia;
+  margin: 0;
+  background-image: url("/assets/images/gastronomie-background.png"),linear-gradient(to right, rgb(255, 239, 186), rgb(255, 255, 255));
+  background-repeat: no-repeat;
+  background-position: 15% 15%;
+}
+
+// Globale variables
+
+$color1-title: #C30000;
+$color2-title:#F29800;
+
+// Flexbox
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
 }
 
 .flex-row-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 
-$color1-title: #BF0014;
-$color2-title: #DF9800;
+.flex-column-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-around {
+  justify-content: space-around;
+}

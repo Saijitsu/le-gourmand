@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -44,6 +45,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     ReactiveFormsModule,
     MatIconModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets'
+    }),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthService, AuthGuardService],

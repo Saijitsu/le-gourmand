@@ -1,5 +1,9 @@
-$color1-title: #BF0014;
-$color2-title: #DF9800;
+$color1-title: #C30000;
+$color2-title: #F29800;
+
+mat-toolbar{
+  background: rgb(34, 34, 34);
+}
 
 h1 {
   font-weight: bold;
@@ -22,7 +26,7 @@ ul {
 
   li a {
     display: block;
-    color: black;
+    color: white;
     padding-left: 1em;
     padding-right: 1em;
     text-align: center;
@@ -35,6 +39,11 @@ ul {
 
   li a:hover:not(.active) {
     background-color: $color2-title;
+    color:  rgb(34, 34, 34);
     border-radius: 1em;
   }
+}
+
+mat-icon{
+  padding-left: 4px
 }

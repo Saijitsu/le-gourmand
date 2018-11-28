@@ -1,6 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-header></app-header>
-<router-outlet></router-outlet>
-
-
-
+  <section class="site">
+ <header>
+    <app-header></app-header>
+  </header>
+  <main class="flex-row-container space-around site-content">
+    <section>
+      <app-restaurant-list></app-restaurant-list>
+      <app-restaurant-reviews></app-restaurant-reviews>
+    </section>
+    <aside>
+      <app-map-view></app-map-view>
+    </aside>
+  </main>
+  <router-outlet></router-outlet>
+  <!-- Routed components go here -->
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+ </section>
