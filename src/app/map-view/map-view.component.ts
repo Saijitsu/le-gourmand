@@ -12,18 +12,18 @@ export class MapViewComponent implements OnInit {
   zoom: Number = 15;
 
   // initial center position for the map
-  public lat: any = 47.263307;
-  public lng: any = -1.516461;
+  public lat;
+  public lng;
 
   constructor() {
     if (navigator) {
-      navigator.geolocation.getCurrentPosition(pos => {
-        this.lng = +pos.coords.longitude;
-        this.lat = +pos.coords.latitude;
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lng = +position.coords.longitude;
+        this.lat = +position.coords.latitude;
         console.log('Votre position actuelle est :');
-        console.log(`Latitude : ${pos.coords.longitude}`);
-        console.log(`Longitude : ${pos.coords.latitude}`);
-        console.log(`La précision est de ${pos.coords.accuracy} mètres.`);
+        console.log(`Latitude : ${position.coords.longitude}`);
+        console.log(`Longitude : ${position.coords.latitude}`);
+        console.log(`La précision est de ${position.coords.accuracy} mètres.`);
       });
     }
   }
