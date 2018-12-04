@@ -1,8 +1,14 @@
-<h1>{{ title }}</h1>
-
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
+  <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat"
+    [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)"
+    [iconUrl]='{url: "./assets/images/map-marker.png", scaledSize: { width: 28, height: 42}}'>
+   <agm-info-window>
+      <strong>{{m.label}}</strong>
+    </agm-info-window>
   </agm-marker>
+  <agm-marker [latitude]="lat" [longitude]="lng" [label]="User" [iconUrl]='{url: "./assets/images/current-location-marker.png", scaledSize: { width: 28, height: 32}}'>
+  </agm-marker>
+
 </agm-map>

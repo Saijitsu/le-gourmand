@@ -1,19 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
-  <section class="site">
+  <section fxLayout="column" fxFlexFill>
  <header>
     <app-header></app-header>
   </header>
-  <main class="flex-row-container space-around site-content">
-    <section>
-      <app-restaurant-list></app-restaurant-list>
-      <app-restaurant-reviews></app-restaurant-reviews>
-    </section>
-    <aside>
-      <app-map-view></app-map-view>
-    </aside>
-  </main>
+  <main fxFlex>
   <router-outlet></router-outlet>
   <!-- Routed components go here -->
+  </main>
   <footer>
     <app-footer></app-footer>
   </footer>
