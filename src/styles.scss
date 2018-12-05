@@ -18,25 +18,3 @@ html, body {
 
 $color1-title: #C30000;
 $color2-title:#F29800;
-
-// Flexbox
-
-.flex-row-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.flex-column-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.space-between {
-  justify-content: space-between;
-}
-
-.space-around {
-  justify-content: space-around;
-}

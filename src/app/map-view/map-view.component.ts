@@ -12,8 +12,8 @@ export class MapViewComponent implements OnInit {
   zoom: Number = 15;
 
   // initial center position for the map
-  public lat;
-  public lng;
+  lat = 47.2632799;
+  lng = -1.5164536;
 
   constructor() {
     if (navigator) {
@@ -34,14 +34,12 @@ export class MapViewComponent implements OnInit {
       lng: -1.517556,
       label: 'A',
       draggable: true,
-      custom: '{ url: "./assets/images/map-marker.png", scaledSize: { width: 40,height: 60}}'
     },
     {
       lat: 47.269900,
       lng: -1.519183,
       label: 'B',
       draggable: false,
-      custom: '{url: "./assets/images/map-marker.png", scaledSize: { width: 40, height: 60}}'
     }
   ];
 
@@ -54,7 +52,6 @@ export class MapViewComponent implements OnInit {
       lat: $event.coords.lat,
       lng: $event.coords.lng,
       draggable: true,
-      custom: '',
     });
   }
 
@@ -73,6 +70,5 @@ interface Marker {
   lng: any;
   label?: string;
   draggable: boolean;
-  custom: any;
 }
 
