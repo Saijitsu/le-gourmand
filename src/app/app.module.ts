@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { MapViewComponent } from './map-view/map-view.component';
+import { MapViewComponent } from './restaurants-view/map-view/map-view.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { RestaurantListComponent } from './restaurant-view/restaurant-list/restaurant-list.component';
-import { RestaurantReviewsComponent } from './restaurant-view/restaurant-reviews/restaurant-reviews.component';
+import { RestaurantsListComponent } from './restaurants-view/restaurants-list/restaurants-list.component';
+import { RestaurantReviewsComponent } from './restaurants-view/restaurant-reviews/restaurant-reviews.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -17,16 +17,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-import { RestaurantViewResultComponent } from './restaurant-view-result/restaurant-view-result.component';
+import { RestaurantsViewComponent } from './restaurants-view/restaurants-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'restaurant-view-result', component: RestaurantViewResultComponent },
-  { path: '', redirectTo: 'restaurant-view-result', pathMatch: 'full' },
+  { path: 'restaurants-view', component: RestaurantsViewComponent },
+  { path: '', redirectTo: 'restaurants-view', pathMatch: 'full' },
   { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: 'restaurant-view-result' }
+  { path: '**', redirectTo: 'restaurants-view' }
 ];
 
 @NgModule({
@@ -35,12 +35,12 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     MapViewComponent,
-    RestaurantListComponent,
+    RestaurantsListComponent,
     RestaurantReviewsComponent,
     FourOhFourComponent,
     SignupComponent,
     SigninComponent,
-    RestaurantViewResultComponent
+    RestaurantsViewComponent
   ],
   imports: [
     BrowserModule,
