@@ -8,13 +8,13 @@ import { MouseEvent } from '@agm/core';
 })
 export class MapViewComponent implements OnInit {
 
-  // google maps zoom level
+  /*// google maps zoom level
   zoom: Number = 15;
 
   // initial center position for the map
   public lat: any = 47.2632799;
   public lng: any = -1.5164536;
-
+*/
   markers: Marker[] = [
     {
       lat: 47.269598,
@@ -33,9 +33,9 @@ export class MapViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.getUserLocation();
+  /*  this.getUserLocation();*/
   }
-
+/*
   private getUserLocation() {
    /// locate the user
    if (navigator.geolocation) {
@@ -49,6 +49,7 @@ console.log('Votre position actuelle est :');
      });
    }
  }
+*/
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the Marker: ${label || index}`);
