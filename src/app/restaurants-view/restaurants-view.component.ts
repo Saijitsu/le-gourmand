@@ -1,6 +1,9 @@
-import { Component, NgZone, OnInit } from '@angular/core';
-import { } from 'googlemaps';
+import { Component, OnInit } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { PlaceService } from '../services/place.service';
+// import { GoogleMap } from '@agm/core/services/google-maps-types';
+
+declare let google: any;
 
 @Component({
   selector: 'app-restaurants-view',
@@ -14,10 +17,7 @@ export class RestaurantsViewComponent implements OnInit {
   public longitude: number;
   public zoom: number;
 
-  constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) { }
+  constructor(private mapsAPILoader: MapsAPILoader, private placeService: PlaceService) { }
 
   ngOnInit() {
     // set google maps defaults
@@ -34,39 +34,10 @@ export class RestaurantsViewComponent implements OnInit {
       fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
     };
 
-   const service = new google.maps.places.PlacesService(map);
-
-   service.findPlaceFromQuery(request, (results, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-
-      results.forEach((item) => {
-        console.log(item);
-        // place_id, name, formatted_address, geometry.location, icon
-      });
-    }
-  });
-
-    // load Places Autocomplete (remplace searcheElementRef here by ?)
-    this.mapsAPILoader.load().then(() => {
-      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ['address']
-      });
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          // get the place result
-          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          // verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          // set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-        });
-      });
+   this.mapsAPILoader.load().then(() => {
+     console.log('le contenu de google maps:', google);
+    // const service = new google.maps.places.PlacesService(<HTMLDivElement>document.getElementsByTagName('agm-map')[0]);
+   // console.log('accès à la librairies', service);
     });
   }
 
