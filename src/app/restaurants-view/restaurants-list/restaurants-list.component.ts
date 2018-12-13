@@ -1,3 +1,4 @@
+import { PlaceService } from './../../services/place.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantsListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public places: PlaceService) { }
 
   ngOnInit() {
   }
