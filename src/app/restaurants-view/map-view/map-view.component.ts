@@ -13,7 +13,7 @@ export class MapViewComponent implements OnInit {
 
   @ViewChild(AgmMap) agmMap;
 // test 23
- map: any;
+ public map: any;
 
   // google maps zoom level
   zoom: number;
@@ -39,32 +39,34 @@ export class MapViewComponent implements OnInit {
       this.latitude = this.placeService.latitude;
       this.longitude = this.placeService.longitude;
       this.zoom = this.placeService.zoom;
-      this.markers = this.placeService.markers;
-      console.log('affichage de les markers après 600 millisecondes', this.markers);
-    }, 600);
+      console.log('Mise à jour des coordonnées après 300 millisecondes');
+    }, 300);
 
     setTimeout(() => {
+    this.markers = this.placeService.markers;
     this.placesList = this.placeService.placesList;
-    console.log('ajout des contenus après 800 millisecondes', this.placesList);
-  }, 800);
+    console.log('Après 800 millisecondes => Création des markers:', this.markers);
+  }, 300);
   }
 // test 23
  setMap(map) {
-    console.log('affiche le contenu de la carte:', map);
     this.map = map;
+    console.log('affiche le contenu de la carte AGM Map:', map);
   }
 
   clickedMarker(label: string, index: number) {
     console.log(`clicked the Marker: ${label || index}`);
   }
 
-  mapClicked($event: MouseEvent) {
+ /* mapClicked($event: MouseEvent) {
     this.markers.push({
       latitude: $event.coords.lat,
       longitude: $event.coords.lng,
+      label: 1, // total+1
+      name: '', // avec input
       draggable: true,
     });
-  }
+  }*/
 
     markerDragEnd(m: Marker, $event: MouseEvent) {
       console.log('dragEnd', m, $event);
@@ -76,7 +78,8 @@ export class MapViewComponent implements OnInit {
 interface Marker {
   latitude: number;
   longitude: number;
-  label?: string;
+  label: string;
+  name: string;
   draggable: boolean;
 }
 
