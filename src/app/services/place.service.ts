@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { MapsAPILoader } from '@agm/core';
+import { Injectable, OnInit } from '@angular/core';
+import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 declare let google: any;
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlaceService {
+export class PlaceService implements OnInit {
 
   public latitude: number;
   public longitude: number;
@@ -14,25 +14,25 @@ export class PlaceService {
   public zoom: number;
   public placesList: any = [];
 
-  markers = [/*
+  markers = [
     {
-      latitude: this.placesList[0].geometry.location.lat(),
-      longitude: this.placesList[0].geometry.location.lng(),
+      latitude: 47.2634,
+      longitude: -1.5144,
       label: '0',
       draggable: true,
     },
     {
-      latitude: this.placesList[1].geometry.location.lat(),
-      longitude: this.placesList[1].geometry.location.lng(),
+      latitude: 47.263779,
+      longitude: -1.51647,
       label: '1',
-      draggable: false,
-    },
-    {
-      latitude: this.placesList[2].geometry.location.lat(),
-      longitude: this.placesList[2].geometry.location.lng(),
-      label: '2',
       draggable: true,
     },
+    {
+      latitude: 47.2632779,
+      longitude: -1.516755,
+      label: '2',
+      draggable: true,
+    }/*,
     {
       latitude: this.placesList[3].geometry.location.lat(),
       longitude: this.placesList[3].geometry.location.lng(),
@@ -40,23 +40,27 @@ export class PlaceService {
       draggable: false,
     }*/];
 
-  // public service: google.maps.places.PlacesService;
-
-  constructor(public mapAPIloader: MapsAPILoader) {
+  constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
     this.zoom = 12;
     this.latitude = 47.2632799;
     this.longitude = -1.5164536;
-    console.log('default coords');
 
     // set current position
     this.setCurrentPosition();
+    console.log('coordonnées actualisées', this.location);
 
     // create the places list of restaurants
-    // this.getRestaurants();
+    setTimeout(() => {
+      this.getRestaurants();
+      console.log('La liste des restaurants après 1 secondes, la carte disparait:', this.placesList);
+    }, 1000);
   }
 
-  setCurrentPosition() {
+  ngOnInit() {
+  }
+
+  private setCurrentPosition() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.location = position.coords;
@@ -71,7 +75,7 @@ export class PlaceService {
     }
   }
 
-  getRestaurants() {
+  private getRestaurants() {
     return this.mapAPIloader.load().then(() => {
       const service = new google.maps.places.PlacesService(<HTMLDivElement>document.getElementsByTagName('agm-map')[0]);
       // console.log(service); // Doit return tableau des restaurants
@@ -85,7 +89,7 @@ export class PlaceService {
           for (let i = 0; i < results.length; i++) {
             this.placesList.push(results[i]);
           }
-          console.log('La liste des restaurants:', this.placesList);
+          //  console.log('La liste des restaurants:', this.placesList);
         }
       });
     }, (error) => {

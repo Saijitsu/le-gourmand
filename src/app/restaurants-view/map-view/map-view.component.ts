@@ -1,7 +1,6 @@
 import { PlaceService } from '../../services/place.service';
-// import { MapsAPILoader } from '@agm/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MouseEvent, AgmMap, MarkerManager } from '@agm/core';
+import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 
 
 @Component({
@@ -13,6 +12,8 @@ import { MouseEvent, AgmMap, MarkerManager } from '@agm/core';
 export class MapViewComponent implements OnInit {
 
   @ViewChild(AgmMap) agmMap;
+// test 23
+ map: any;
 
   // google maps zoom level
   zoom: number;
@@ -25,48 +26,32 @@ export class MapViewComponent implements OnInit {
   placesList: Promise<void>;
 
     // Array of markers on google map.
-    markers: Marker[]; /*= [
-      {
-        latitude: this.placesList[0].geometry.location.lat(),
-        longitude: this.placesList[0].geometry.location.lng(),
-        label: '0',
-        draggable: true,
-      },
-      {
-        latitude: this.placesList[1].geometry.location.lat(),
-        longitude: this.placesList[1].geometry.location.lng(),
-        label: '1',
-        draggable: false,
-      },
-      {
-        latitude: this.placesList[2].geometry.location.lat(),
-        longitude: this.placesList[2].geometry.location.lng(),
-        label: '2',
-        draggable: true,
-      },
-      {
-        latitude: this.placesList[3].geometry.location.lat(),
-        longitude: this.placesList[3].geometry.location.lng(),
-        label: '3',
-        draggable: false,
-      }
-    ];*/
+    markers: Marker[];
 
-  constructor(public placeService: PlaceService /*, public mapsAPILoader: MapsAPILoader*/) {
-    setTimeout(() => {
+  constructor(public placeService: PlaceService ,  public gMaps: GoogleMapsAPIWrapper) {
+    // Préchargement de la carte, voir pour actualiser ensuite*
     this.latitude = this.placeService.latitude;
     this.longitude = this.placeService.longitude;
-    this.zoom = this.placeService.zoom;
-    this.markers = this.placeService.markers;
-    console.log('affichage de la carte après 100 millisecondes');
-  }, 600);
   }
 
   ngOnInit() {
     setTimeout(() => {
+      this.latitude = this.placeService.latitude;
+      this.longitude = this.placeService.longitude;
+      this.zoom = this.placeService.zoom;
+      this.markers = this.placeService.markers;
+      console.log('affichage de les markers après 600 millisecondes', this.markers);
+    }, 600);
+
+    setTimeout(() => {
     this.placesList = this.placeService.placesList;
-    console.log('ajout des contenus après 200 millisecondes');
+    console.log('ajout des contenus après 800 millisecondes', this.placesList);
   }, 800);
+  }
+// test 23
+ setMap(map) {
+    console.log('affiche le contenu de la carte:', map);
+    this.map = map;
   }
 
   clickedMarker(label: string, index: number) {
