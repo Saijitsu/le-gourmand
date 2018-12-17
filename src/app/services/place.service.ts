@@ -71,7 +71,7 @@ export class PlaceService implements OnInit {
             const addNewMarker = CreateMaker.create({
               latitude: this.placesList[i].geometry.location.lat(),
               longitude: this.placesList[i].geometry.location.lng(),
-              label: i.toString(),
+              label: (i + 1).toString(),
               name: this.placesList[i].name,
               draggable: false
             });
@@ -79,7 +79,7 @@ export class PlaceService implements OnInit {
                     // console.log(addNewMarker);
              // Add new restaurants
              const addNewRestaurants = CreateRestaurants.create({
-              id: i,
+              id: i + 1,
               name: this.placesList[i].name,
               vinanityAdress: this.placesList[i].vicinity,
               latitude: this.placesList[i].geometry.location.lat(),
@@ -101,7 +101,7 @@ export class PlaceService implements OnInit {
   }
 }
 
-// Create Marker Data
+// Create Marker Data (refaire avec un Model?)
 class MarkerList {
   constructor(
     public latitude: number,
@@ -116,7 +116,7 @@ class CreateMaker {
     return new MarkerList(event.latitude, event.longitude, event.label, event.name, event.draggable);
   }
 }
-// Create Restaurants Data
+// Create Restaurants Data (refaire avec un Model?)
 class Restaurants {
   constructor(
     public id: number,

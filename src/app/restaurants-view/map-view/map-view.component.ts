@@ -58,18 +58,18 @@ export class MapViewComponent implements OnInit {
     console.log(`clicked the Marker: ${label || index}`);
   }
 
- /* mapClicked($event: MouseEvent) {
+  mapClicked($event: MouseEvent) {
     this.markers.push({
       latitude: $event.coords.lat,
       longitude: $event.coords.lng,
-      label: 1, // total+1
-      name: '', // avec input
+      label: (this.markers.length + 1).toString(), // Nombre totals des restaurants de la zone +1
+      name: 'Créez-moi', // A récupérer avec input
       draggable: true,
     });
-  }*/
+  }
 
     markerDragEnd(m: Marker, $event: MouseEvent) {
-      console.log('dragEnd', m, $event);
+      console.log('New Restaurant ici?', m, $event);
     }
 }
 
