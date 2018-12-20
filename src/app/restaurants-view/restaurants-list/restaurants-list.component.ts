@@ -1,5 +1,7 @@
 import { PlaceService } from './../../services/place.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+
 
 
 @Component({
@@ -9,8 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantsListComponent implements OnInit {
 
-  constructor(public places: PlaceService) { }
+  @ViewChild(CdkVirtualScrollViewport)
+  viewport: CdkVirtualScrollViewport;
+
+ // Array of restaurants.
+ restaurants: Restaurants[];
+
+  constructor(public placeService: PlaceService) {
+
+  }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.restaurants = this.placeService.restaurants;
+      console.log('affichage de la liste des restaurants après 300 millisecondes', this.restaurants);
+    }, 300);
   }
+}
+
+interface Restaurants {
+    id: number;
+    name: string;
+    vinanityAdress: string;
+    latitude: string;
+    longitude: string;
+    rating: string;
+    percentageRating: string;
+    placeId: string;
+    photo: any;
+    openingHours: string;
 }

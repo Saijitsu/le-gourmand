@@ -24,21 +24,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
-/*Promise.all([this.mapsAPILoader.load(), this.places.getMap()]).then((valuesArray) => {
-const map: GoogleMap = valuesArray[1];
-
-const service = new google.maps.places.PlacesService(<HTMLDivElement>document.getElementsByTagName('agm-map')[0]);
-console.log(service);*/
-
-    /*});
-    this.places.getMap().then((map) => {
-      console.log('test ultime 1', map);
-    });
-    setTimeout(() => {
-      this.places.getMap().then((map) => {
-        console.log('test ultime 2', map);
-      });
-    }, 2000);*/
   }
 }

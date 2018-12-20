@@ -12,9 +12,6 @@ import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 export class MapViewComponent implements OnInit {
 
   @ViewChild(AgmMap) agmMap;
-// test 23
- public map: any;
-
   // google maps zoom level
   zoom: number;
 
@@ -23,7 +20,7 @@ export class MapViewComponent implements OnInit {
   longitude: number;
 
   // list of restaurants
-  placesList: Promise<void>;
+  // placesList: Promise<void>;
 
     // Array of markers on google map.
     markers: Marker[];
@@ -39,23 +36,18 @@ export class MapViewComponent implements OnInit {
       this.latitude = this.placeService.latitude;
       this.longitude = this.placeService.longitude;
       this.zoom = this.placeService.zoom;
-      console.log('Mise à jour des coordonnées après 300 millisecondes');
+   //   console.log('Mise à jour des coordonnées après 300 millisecondes');
     }, 300);
 
     setTimeout(() => {
     this.markers = this.placeService.markers;
-    this.placesList = this.placeService.placesList;
-    console.log('Après 800 millisecondes => Création des markers:', this.markers);
-  }, 300);
-  }
-// test 23
- setMap(map) {
-    this.map = map;
-    console.log('affiche le contenu de la carte AGM Map:', map);
+   // this.placesList = this.placeService.placesList;
+  //  console.log('Après 400 millisecondes => Création des markers:', this.markers);
+  }, 400);
   }
 
   clickedMarker(label: string, index: number) {
-    console.log(`clicked the Marker: ${label || index}`);
+ //   console.log(`clicked the Marker: ${label || index}`);
   }
 
   mapClicked($event: MouseEvent) {
@@ -69,7 +61,7 @@ export class MapViewComponent implements OnInit {
   }
 
     markerDragEnd(m: Marker, $event: MouseEvent) {
-      console.log('New Restaurant ici?', m, $event);
+    //  console.log('New Restaurant ici?', m, $event);
     }
 }
 

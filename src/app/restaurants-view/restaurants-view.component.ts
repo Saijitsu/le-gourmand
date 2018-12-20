@@ -12,46 +12,9 @@ declare let google: any;
 
 export class RestaurantsViewComponent implements OnInit {
 
- // public latitude: number;
- // public longitude: number;
-  // public zoom: number;
-
-  constructor(/*private placeService: PlaceService*/) {
-   // this.latitude = this.placeService.latitude;
-   // this.longitude = this.placeService.longitude;
-   // this.zoom = this.placeService.zoom;
+  constructor() {
    }
 
   ngOnInit() {
   }
 }
-
-//  Restaurant interface is using json literals to create the array element
-interface Restaurant {
-  id: string;
-  name: string;
-  vinanityAdress: string;
-  latitude: string;
-  longitude: string;
-  rating: string;
-  review: string;
-  photo: string;
-  openingHours: string;
-}
-
-// The array element
-const restaurants: Restaurant[] = [];
-
-restaurants.push({
-  id: '',
-  name: '',
-  vinanityAdress: '',
-  latitude: '',
-  longitude: '',
-  rating: '',
-  review: '',
-  photo: '',
-  openingHours: ''
-});
-
-

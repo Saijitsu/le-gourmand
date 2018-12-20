@@ -1,3 +1,46 @@
-restaurants-list {
-  max-width: 600px;
-}
+.groupe-list {
+  max-width: 500px;
+  color: rgb(34, 34, 34);
+  list-style: none;
+  margin: 50px auto;
+  padding: 10px;
+
+  cdk-virtual-scroll-viewport {
+    height: 100vh;
+    max-height: 600px;
+    min-width: 800px;
+
+    li {
+      min-height: 150px;
+      padding: 25px;
+      background: rgba(228, 211, 181, 0.76);
+      border-radius: 5px;
+      margin-bottom: 5px;
+      text-align: center;
+      font-weight: 600;
+
+      img{
+        background: rgb(34, 34, 34);
+        }
+      }
+    }
+  }
+
+  .star-ratings-sprite {
+    background: url("/assets/images/star-rating-sprite.png") repeat-x;
+    font-size: 0;
+    height: 21px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 110px;
+    margin: 0 auto;
+
+    &-rating {
+      background: url("/assets/images/star-rating-sprite.png") repeat-x;
+      background-position: 0 100%;
+      float: left;
+      height: 21px;
+      display:block;
+    }
+  }
