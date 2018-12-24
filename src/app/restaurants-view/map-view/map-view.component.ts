@@ -50,6 +50,17 @@ export class MapViewComponent implements OnInit {
  //   console.log(`clicked the Marker: ${label || index}`);
   }
 
+// Marker Over
+markerOver(m: Marker) {
+  m.animation = 'BOUNCE';
+}
+
+// Marker Out
+markerOut(m: Marker) {
+  m.animation = '';
+}
+
+// Click to creat a new marker
   mapClicked($event: MouseEvent) {
     this.markers.push({
       latitude: $event.coords.lat,
@@ -57,6 +68,7 @@ export class MapViewComponent implements OnInit {
       label: (this.markers.length + 1).toString(), // Nombre totals des restaurants de la zone +1
       name: 'Créez-moi', // A récupérer avec input
       draggable: true,
+      animation: 'DROP'
     });
   }
 
@@ -73,6 +85,7 @@ interface Marker {
   label: string;
   name: string;
   draggable: boolean;
+  animation: 'DROP' | 'BOUNCE' | '';
 }
 
 

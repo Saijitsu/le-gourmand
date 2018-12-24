@@ -17,6 +17,9 @@ export class PlaceService implements OnInit {
   public markers = [];
   public restaurants = [];
 
+  // Review Test
+  public detailData = [];
+
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
     this.zoom = 10;
@@ -32,6 +35,14 @@ export class PlaceService implements OnInit {
       this.getRestaurants();
       // console.log('la methode getRestaurants() fait disparaître la carte?!');
     }, 200);
+
+ // Review Test
+ /*  setTimeout(() => {
+    // console.log('la methode getRestaurants() fait disparaître la carte?!');
+    this. getDetail();
+    console.log('Contenu de la review:', this.detailData);
+  }, 300);
+  */
   }
 
   ngOnInit() {
@@ -61,7 +72,7 @@ export class PlaceService implements OnInit {
 
       service.nearbySearch({
         location: { lat: this.latitude, lng: this.longitude },
-        radius: 750,
+        radius: 1000,
         type: ['restaurant']
       }, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -76,8 +87,9 @@ export class PlaceService implements OnInit {
               name: this.placesList[i].name,
               photo: typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
-                : '/assets/images/noPhoto.jpg', // alternative photo,
-              draggable: false
+                : '/assets/images/noPhoto.png', // alternative photo,
+              draggable: false,
+              animation: 'DROP'
             });
             this.markers.push(addNewMarker);
 
@@ -93,7 +105,7 @@ export class PlaceService implements OnInit {
               placeId: this.placesList[i].place_id,
               photo: typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
-                : '/assets/images/noPhoto.jpg', // alternative photo
+                : '/assets/images/noPhoto.png', // alternative photo
               openingHours: this.placesList[i].opening_hours,
             });
             this.restaurants.push(addNewRestaurants);
@@ -104,7 +116,30 @@ export class PlaceService implements OnInit {
       console.log('Le chargement des données google places ne fonctionne pas:', error);
     });
   }
+
+ // Review Test
+  getDetail() {
+    //  https://maps.googleapis.com/maps/api/place/details/json?key=[YOUR API KEY]&placeid=[ID Place]
+    /* const request = {
+       placeId: '', // insert ID here
+       fields: ['review']
+     };*/
+    const myDiv = <HTMLDivElement>document.createElement('div');
+    const service = new google.maps.places.PlacesService(myDiv);
+
+    service.getDetail({
+      placeId: 'ChIJ38ZsTHD-EUgRaFUkx0PlZX8', // insert ID here
+      fields: ['review']
+    }, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        this.detailData.push(results);
+      }
+    }, (error) => {
+      console.log('Le chargement des données google places detail ne fonctionne pas:', error);
+    });
+  }
 }
+
 
 // Create Marker Data
 // return une instance de MarkerList (défini la structure) avec CreateMaker.create() (implémente la structure)
@@ -115,12 +150,13 @@ class MarkerList {
     public label: string,
     public name: string,
     public photo: any,
-    public draggable: boolean) { }
+    public draggable: boolean,
+    public animation: any) { }
 }
 
 class CreateMaker {
   static create(event: MarkerList) {
-    return new MarkerList(event.latitude, event.longitude, event.label, event.name, event.photo, event.draggable);
+    return new MarkerList(event.latitude, event.longitude, event.label, event.name, event.photo, event.draggable, event.animation);
   }
 }
 // Create Restaurants Data
