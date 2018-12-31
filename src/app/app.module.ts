@@ -9,7 +9,7 @@ import { MapViewComponent } from './restaurants-view/map-view/map-view.component
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { RestaurantsListComponent } from './restaurants-view/restaurants-list/restaurants-list.component';
-import { RestaurantReviewsComponent } from './restaurants-view/restaurant-reviews/restaurant-reviews.component';
+import { RestaurantReviewComponent } from './restaurants-view/restaurant-reviews/restaurant-review.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -39,7 +39,7 @@ const appRoutes: Routes = [
     FooterComponent,
     MapViewComponent,
     RestaurantsListComponent,
-    RestaurantReviewsComponent,
+    RestaurantReviewComponent,
     FourOhFourComponent,
     SignupComponent,
     SigninComponent,

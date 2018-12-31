@@ -17,7 +17,9 @@
             <h3>{{restaurant.vinanityAdress}}</h3>
           </div>
         </div>
-   <!--  review:    <app-restaurant-reviews [review]=></app-restaurant-reviews> -->
+        <ng-container *ngFor="let review of restaurant.reviews">
+        <app-restaurant-review [review]="review"></app-restaurant-review>
+        </ng-container >
       </li>
     </ng-container>
   </cdk-virtual-scroll-viewport>

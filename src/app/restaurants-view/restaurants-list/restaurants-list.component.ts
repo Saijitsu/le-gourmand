@@ -1,7 +1,7 @@
-import { PlaceService } from './../../services/place.service';
+import { Review } from './../restaurant-reviews/restaurant-review.component';
+import { PlaceService, Restaurant } from './../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-
 
 @Component({
   selector: 'app-restaurants-list',
@@ -14,10 +14,17 @@ export class RestaurantsListComponent implements OnInit {
   viewport: CdkVirtualScrollViewport;
 
  // Array of restaurants.
- restaurants: Restaurants[];
+ restaurants: Restaurant[];
+  // Array of reviews.
+  testReview: Review;
 
   constructor(public placeService: PlaceService) {
-
+this.testReview = {
+  author_name: 'Testeur',
+  profile_photo_url: 'http://toto',
+rating: 3,
+relative_time_description: 'hier',
+text: 'Super bon'};
   }
 
   ngOnInit() {
@@ -28,24 +35,12 @@ export class RestaurantsListComponent implements OnInit {
   }
 }
 
-interface Restaurants {
-    id: number;
-    name: string;
-    vinanityAdress: string;
-    latitude: string;
-    longitude: string;
-    rating: string;
-    percentageRating: string;
-    placeId: string;
-    photo: any;
-    openingHours: string;
-}
-
-interface Reviews {
+/*
+interface Review {
   author_name: string;
   profile_photo_url: string;
   rating: number;
   relative_time_description: string;
   text: string;
 }
-
+ */
