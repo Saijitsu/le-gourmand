@@ -6,9 +6,8 @@
           <h1>Restaurant n°{{restaurant.id}}</h1>
           <h1>{{restaurant.name}}</h1>
           <aside fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="star-ratings-sprite">
-              <span [style.width]="restaurant.percentageRating" class="star-ratings-sprite-rating"></span></div>
-            {{restaurant.rating}}
+            <app-stars [rating]="restaurant.rating"></app-stars>
+            <p>{{restaurant.rating}}</p>
           </aside>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -18,47 +17,14 @@
             <h3>{{restaurant.vinanityAdress}}</h3>
           </div>
         </div>
+   <!--  review:    <app-restaurant-reviews [review]=></app-restaurant-reviews> -->
       </li>
     </ng-container>
   </cdk-virtual-scroll-viewport>
 </ul>
 
-
-
-<!-- TEST 2
-   <mat-list class="groupe-list">
-  <cdk-virtual-scroll-viewport style="height: 500px; width: 600px" itemSize="100%">
-    <ng-container *cdkVirtualFor="let restaurant of restaurants">
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-            id: {{restaurant.id}}
-            name: {{restaurant.name}}
-            rating: {{restaurant.rating}}
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <img src={{restaurant.photo}} width="300">
-            <div fxLayout="column" fxLayoutAlign="space-around center">
-              vinanityAdress: {{restaurant.vinanityAdress}}
-            </div>
-          </div>        </ng-container>
-  </cdk-virtual-scroll-viewport>
-</mat-list>
-  -->
-
-
-<!-- ZONE D'ATTENTE:
-   <mat-list-item *ngFor="let restaurant of restaurants" fxLayout="column" fxLayoutAlign="space-between center" class="restaurants-item">
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            id: {{restaurant.id}}
-            name: {{restaurant.name}}
-            rating: {{restaurant.rating}}
-          </div>
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <img src={{restaurant.photo}} width="300">
-            <!- photo: {{restaurant.photo}} ->
-            <div fxLayout="column" fxLayoutAlign="space-around center">
-              vinanityAdress: {{restaurant.vinanityAdress}}
-              <!-   openingHours: {{restaurant.openingHours}} ->
-            </div>
-          </div>
-                 </mat-list-item>
--->
+author_name: string;
+profile_photo_url: string;
+rating: number;
+relative_time_description: string;
+text: string;

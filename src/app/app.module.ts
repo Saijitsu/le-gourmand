@@ -20,6 +20,7 @@ import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { RestaurantsViewComponent } from './restaurants-view/restaurants-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { StarsComponent } from './stars/stars.component';
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     FourOhFourComponent,
     SignupComponent,
     SigninComponent,
-    RestaurantsViewComponent
+    RestaurantsViewComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,

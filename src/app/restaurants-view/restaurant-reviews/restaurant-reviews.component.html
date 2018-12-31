@@ -1,0 +1,13 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" class="reviews">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <div class="profile_photo">{{review.profile_photo_url}}</div>
+    <h3>{{review.author_name}}</h3>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <app-stars [rating]="review.rating"></app-stars>
+      <p>{{review.relative_time_description}}</p>
+    </div>
+    <p class="text_review">{{review.text}}</p>
+  </div>
+</div>

@@ -66,7 +66,8 @@ markerOut(m: Marker) {
       latitude: $event.coords.lat,
       longitude: $event.coords.lng,
       label: (this.markers.length + 1).toString(), // Nombre totals des restaurants de la zone +1
-      name: 'Créez-moi', // A récupérer avec input
+      name: 'Créez-moi', // A récupérer avec input,
+      rating: '',
       draggable: true,
       animation: 'DROP'
     });
@@ -84,6 +85,7 @@ interface Marker {
   longitude: number;
   label: string;
   name: string;
+  rating: string;
   draggable: boolean;
   animation: 'DROP' | 'BOUNCE' | '';
 }

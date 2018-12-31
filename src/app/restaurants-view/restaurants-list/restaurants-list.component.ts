@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 
-
 @Component({
   selector: 'app-restaurants-list',
   templateUrl: './restaurants-list.component.html',
@@ -41,3 +40,12 @@ interface Restaurants {
     photo: any;
     openingHours: string;
 }
+
+interface Reviews {
+  author_name: string;
+  profile_photo_url: string;
+  rating: number;
+  relative_time_description: string;
+  text: string;
+}
+

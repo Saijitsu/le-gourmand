@@ -37,12 +37,11 @@ export class PlaceService implements OnInit {
     }, 200);
 
  // Review Test
- /*  setTimeout(() => {
+ setTimeout(() => {
     // console.log('la methode getRestaurants() fait disparaître la carte?!');
-    this. getDetail();
+    this.getDetail();
     console.log('Contenu de la review:', this.detailData);
   }, 300);
-  */
   }
 
   ngOnInit() {
@@ -72,7 +71,7 @@ export class PlaceService implements OnInit {
 
       service.nearbySearch({
         location: { lat: this.latitude, lng: this.longitude },
-        radius: 1000,
+        radius: 750,
         type: ['restaurant']
       }, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -85,6 +84,7 @@ export class PlaceService implements OnInit {
               longitude: this.placesList[i].geometry.location.lng(),
               label: (i + 1).toString(),
               name: this.placesList[i].name,
+              rating: this.placesList[i].rating,
               photo: typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
                 : '/assets/images/noPhoto.png', // alternative photo,
@@ -101,7 +101,6 @@ export class PlaceService implements OnInit {
               latitude: this.placesList[i].geometry.location.lat(),
               longitude: this.placesList[i].geometry.location.lng(),
               rating: this.placesList[i].rating,
-              percentageRating: ((this.placesList[i].rating) * 20).toString() + '%',
               placeId: this.placesList[i].place_id,
               photo: typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
@@ -119,15 +118,10 @@ export class PlaceService implements OnInit {
 
  // Review Test
   getDetail() {
-    //  https://maps.googleapis.com/maps/api/place/details/json?key=[YOUR API KEY]&placeid=[ID Place]
-    /* const request = {
-       placeId: '', // insert ID here
-       fields: ['review']
-     };*/
     const myDiv = <HTMLDivElement>document.createElement('div');
     const service = new google.maps.places.PlacesService(myDiv);
 
-    service.getDetail({
+    service.getDetails({
       placeId: 'ChIJ38ZsTHD-EUgRaFUkx0PlZX8', // insert ID here
       fields: ['review']
     }, (results, status) => {
@@ -149,6 +143,7 @@ class MarkerList {
     public longitude: number,
     public label: string,
     public name: string,
+    public rating: string,
     public photo: any,
     public draggable: boolean,
     public animation: any) { }
@@ -156,7 +151,8 @@ class MarkerList {
 
 class CreateMaker {
   static create(event: MarkerList) {
-    return new MarkerList(event.latitude, event.longitude, event.label, event.name, event.photo, event.draggable, event.animation);
+    return new MarkerList(event.latitude, event.longitude, event.label, event.name, event.rating,
+      event.photo, event.draggable, event.animation);
   }
 }
 // Create Restaurants Data
@@ -168,7 +164,6 @@ class Restaurants {
     public latitude: string,
     public longitude: string,
     public rating: string,
-    public percentageRating: string,
     public placeId: string,
     public photo: any,
     public openingHours: string) { }
@@ -177,31 +172,6 @@ class Restaurants {
 class CreateRestaurants {
   static create(event: Restaurants) {
     return new Restaurants(event.id, event.name, event.vinanityAdress, event.latitude,
-      event.longitude, event.rating, event.percentageRating, event.placeId, event.photo, event.openingHours);
+      event.longitude, event.rating, event.placeId, event.photo, event.openingHours);
   }
 }
-
-/*   public starsRating = [];
-
-// Add new stars Rating
-           const addStarRating = CreateStarRating.create({
-            starRating: typeof Number((this.placesList[i].rating) * 20) !== 'undefined'
-              // Check if value array is present for each
-              ? ((this.placesList[i].rating) * 20).toString() + '%'
-              : '0%', // Alternative
-          });
-          console.log(addStarRating);
-          this.starsRating.push(addStarRating);
-
-// return une instance de StarRatingList (défini la structure) avec CreateStarRating.create() (implémente la structure)
-class StarRatingList {
-  constructor(
-    public starRating: string) { }
-}
-
-class CreateStarRating {
-  static create(event: StarRatingList) {
-    return new StarRatingList(event.starRating);
-  }
-}
-*/
