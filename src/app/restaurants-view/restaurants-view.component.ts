@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { PlaceService } from '../services/place.service';
-// import { GoogleMap } from '@agm/core/services/google-maps-types';
 
 declare let google: any;
 
