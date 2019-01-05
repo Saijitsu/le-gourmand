@@ -1,4 +1,4 @@
-import { PlaceService } from '../../services/place.service';
+import { PlaceService, Marker } from '../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 
@@ -46,10 +46,6 @@ export class MapViewComponent implements OnInit {
   }, 400);
   }
 
-  clickedMarker(label: string, index: number) {
- //   console.log(`clicked the Marker: ${label || index}`);
-  }
-
 // Marker Over
 markerOver(m: Marker) {
   m.animation = 'BOUNCE';
@@ -59,7 +55,10 @@ markerOver(m: Marker) {
 markerOut(m: Marker) {
   m.animation = '';
 }
-
+// Click to a marker
+clickedMarker(label) {
+  document.querySelector('#RestaurantId' + label).scrollIntoView();
+}
 // Click to creat a new marker
   mapClicked($event: MouseEvent) {
     this.markers.push({
@@ -68,6 +67,7 @@ markerOut(m: Marker) {
       label: (this.markers.length + 1).toString(), // Nombre totals des restaurants de la zone +1
       name: 'Créez-moi', // A récupérer avec input,
       rating: '',
+      photo: '/assets/images/noPhoto.png',
       draggable: true,
       animation: 'DROP'
     });
@@ -79,6 +79,7 @@ markerOut(m: Marker) {
 }
 
 
+/*
 // just an interface for type safety.
 interface Marker {
   latitude: number;
@@ -88,22 +89,4 @@ interface Marker {
   rating: string;
   draggable: boolean;
   animation: 'DROP' | 'BOUNCE' | '';
-}
-
-
-/* ZONE DE TEST
-function findUserLocation(userCurrentPosition) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve(userCurrentPosition);
-    }, 300);
-  });
-}
-
-async function waitUpdate() {
-  const userCurrentPosition = await findUserLocation(this.placeService.setCurrentPosition());
-  return userCurrentPosition; // return latitude and longitude of user
-}
-// waitUpdate();
- FIN DE ZONE DE TEST
-*/
+} */

@@ -9,19 +9,18 @@
 (mapClick)="mapClicked($event)"
 [usePanning]="true"
 >
-
+<!-- [label]="m.label" can be add in agm marker-->
   <agm-marker *ngFor="let m of markers; let i = index"
-  (markerClick)="clickedMarker(m.label, i)"
   [latitude]="m.latitude"
     [longitude]="m.longitude"
-    [label]="m.label"
     [markerDraggable]="m.draggable"
     (dragEnd)="markerDragEnd(m, $event)"
     [iconUrl]='{url: "./assets/images/map-marker.png", scaledSize: { width: 28, height: 42}}'
     [animation]="m.animation"
     (mouseOver)="markerOver(m)"
-    (mouseOut)="markerOut(m)">
-    <agm-info-window>
+    (mouseOut)="markerOut(m)"
+    (markerClick)="clickedMarker(m.label)">
+    <agm-info-window #infowindow>
       <strong>{{m.label}}: {{m.name}}</strong>
       <div fxLayout="column" fxLayoutAlign="space-around center">
         <img src={{m.photo}} width="150">
@@ -39,9 +38,5 @@
       <strong>Vous êtes ici</strong>
     </agm-info-window>
   </agm-marker>
-
-<!--   <agm-circle [latitude]="latitude" [longitude]="longitude" [radius]="1000" [fillColor]="'rgba(242, 153, 0, 0.5)'"
-    [circleDraggable]="false" [editable]="false">
-  </agm-circle> -->
 
 </agm-map>

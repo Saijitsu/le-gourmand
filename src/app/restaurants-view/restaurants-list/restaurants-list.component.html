@@ -1,7 +1,7 @@
 <ul class="groupe-list">
   <cdk-virtual-scroll-viewport itemSize="100%">
     <ng-container *ngFor="let restaurant of restaurants">
-      <li fxLayout="column" fxLayoutAlign="space-around none">
+      <li fxLayout="column" fxLayoutAlign="space-around none" id ="RestaurantId{{restaurant.id}}">
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <h1>Restaurant n°{{restaurant.id}}</h1>
           <h1>{{restaurant.name}}</h1>

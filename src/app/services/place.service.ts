@@ -37,12 +37,12 @@ export class PlaceService implements OnInit {
       // console.log('la methode getRestaurants() fait disparaître la carte?!');
     }, 200);
 
- // Review Test
+/*  // Review Test
  setTimeout(() => {
     // console.log('la methode getRestaurants() fait disparaître la carte?!');
     this.getDetail();
     console.log('Contenu de la review:', this.detailData);
-  }, 300);
+  }, 300); */
   }
 
   ngOnInit() {
@@ -80,40 +80,40 @@ export class PlaceService implements OnInit {
             this.placesList.push(results[i]);
 
             // Add new markers // Use create new markers
-            const addNewMarker = CreateMarker.create({
-              latitude: this.placesList[i].geometry.location.lat(),
-              longitude: this.placesList[i].geometry.location.lng(),
-              label: (i + 1).toString(),
-              name: this.placesList[i].name,
-              rating: this.placesList[i].rating,
-              photo: typeof results[i].photos !== 'undefined' // Check the photo array is present for each
+            const addNewMarker = new Marker(
+              this.placesList[i].geometry.location.lat(),
+              this.placesList[i].geometry.location.lng(),
+              (i + 1).toString(),
+              this.placesList[i].name,
+              this.placesList[i].rating,
+              typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
                 : '/assets/images/noPhoto.png', // alternative photo,
-              draggable: false,
-              animation: 'DROP'
-            });
+             false,
+             'DROP'
+            );
             this.markers.push(addNewMarker);
 
             // Add new restaurants
-            const addNewRestaurants = CreateRestaurants.create({
-              id: i + 1,
-              name: this.placesList[i].name,
-              vinanityAdress: this.placesList[i].vicinity,
-              latitude: this.placesList[i].geometry.location.lat(),
-              longitude: this.placesList[i].geometry.location.lng(),
-              rating: this.placesList[i].rating,
-              placeId: this.placesList[i].place_id,
-              photo: typeof results[i].photos !== 'undefined' // Check the photo array is present for each
+            const addNewRestaurants = new Restaurant (
+              i + 1,
+              this.placesList[i].name,
+              this.placesList[i].vicinity,
+              this.placesList[i].geometry.location.lat(),
+              this.placesList[i].geometry.location.lng(),
+              this.placesList[i].rating,
+              this.placesList[i].place_id,
+              typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
                 : '/assets/images/noPhoto.png', // alternative photo
-              openingHours: this.placesList[i].opening_hours,
-              reviews: [{
+              this.placesList[i].opening_hours,
+              [{
                       author_name: 'Testeur',
                       profile_photo_url: 'http://toto',
                       rating: 3,
                       relative_time_description: 'hier',
                       text: 'Super bon'}],
-            });
+            );
             this.restaurants.push(addNewRestaurants);
           }
         }
@@ -145,7 +145,7 @@ export class PlaceService implements OnInit {
 // Create Marker Data
 // return une instance de MarkerList (défini la structure) avec CreateMarker.create() (implémente la structure)
 // rename: Marker
-class MarkerList {
+export class Marker {
   constructor(
     public latitude: number,
     public longitude: number,
@@ -157,12 +157,6 @@ class MarkerList {
     public animation: any) { }
 }
 
-class CreateMarker {
-  static create(event: MarkerList) {
-    return new MarkerList(event.latitude, event.longitude, event.label, event.name, event.rating,
-      event.photo, event.draggable, event.animation);
-  }
-}
 // Create Restaurants Data
  export class Restaurant {
   constructor(
@@ -178,9 +172,3 @@ class CreateMarker {
     public reviews: Review[]) { }
 }
 
-class CreateRestaurants {
-  static create(event: Restaurant) {
-    return new Restaurant(event.id, event.name, event.vinanityAdress, event.latitude,
-      event.longitude, event.rating, event.placeId, event.photo, event.openingHours, event.reviews);
-  }
-}
