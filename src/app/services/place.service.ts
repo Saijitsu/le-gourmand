@@ -18,8 +18,9 @@ export class PlaceService implements OnInit {
   public markers = [];
   public restaurants = [];
 
-  // Review Test
-  public detailData = [];
+  // Review Test 07/01/2019
+  public placeDetailsResults = [];
+  public entry: number;
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
@@ -37,12 +38,12 @@ export class PlaceService implements OnInit {
       // console.log('la methode getRestaurants() fait disparaître la carte?!');
     }, 200);
 
-/*  // Review Test
+/* // Review Test 07/01/2018
  setTimeout(() => {
-    // console.log('la methode getRestaurants() fait disparaître la carte?!');
+    this.entry = 0;
     this.getDetail();
     console.log('Contenu de la review:', this.detailData);
-  }, 300); */
+  }, 800); */
   }
 
   ngOnInit() {
@@ -123,22 +124,22 @@ export class PlaceService implements OnInit {
     });
   }
 
- // Review Test
+  // Review Test 07/01/2019
   getDetail() {
-    const myDiv = <HTMLDivElement>document.createElement('div');
-    const service = new google.maps.places.PlacesService(myDiv);
+  const myDiv = <HTMLDivElement>document.createElement('div');
+  const service = new google.maps.places.PlacesService(myDiv);
 
-    service.getDetails({
-      placeId: 'ChIJ38ZsTHD-EUgRaFUkx0PlZX8', // insert ID here
-      fields: ['review']
-    }, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        this.detailData.push(results);
-      }
-    }, (error) => {
-      console.log('Le chargement des données google places detail ne fonctionne pas:', error);
-    });
-  }
+  service.getDetails({
+    placeId: this.restaurants[this.entry].placeId, // insert ID here ex:'ChIJ38ZsTHD-EUgRaFUkx0PlZX8'
+    fields: ['review']
+  }, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      this.placeDetailsResults.push(results);
+    }
+  }, (error) => {
+    console.log('Le chargement des données google places detail ne fonctionne pas:', error);
+  });
+}
 }
 
 

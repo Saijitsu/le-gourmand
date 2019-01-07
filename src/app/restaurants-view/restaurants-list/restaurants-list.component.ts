@@ -13,18 +13,26 @@ export class RestaurantsListComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
 
- // Array of restaurants.
+// Array of restaurants
  restaurants: Restaurant[];
-  // Array of reviews.
-  testReview: Review;
+
+// Array of reviews
+  reviews: Review;
+
+  // Review Test 07/01/2019
+  placeDetailsResults: any[];
+
+// Show/Hide review element
+  showReviews = false;
+  showAddReview = false;
 
   constructor(public placeService: PlaceService) {
-this.testReview = {
+/* this.reviews = {
   author_name: 'Testeur',
   profile_photo_url: 'http://toto',
 rating: 3,
 relative_time_description: 'hier',
-text: 'Super bon'};
+text: 'Super bon'}; */
   }
 
   ngOnInit() {
@@ -32,15 +40,16 @@ text: 'Super bon'};
       this.restaurants = this.placeService.restaurants;
       console.log('affichage de la liste des restaurants après 300 millisecondes', this.restaurants);
     }, 300);
+
+// Review Test 07/01/2019
+setTimeout(() => {
+  // console.log('la methode getRestaurants() fait disparaître la carte?!');
+  this.placeService.entry = 0;
+  this.placeService.getDetail();
+  this.placeDetailsResults =  this.placeService.placeDetailsResults;
+    console.log('Contenu de la review:', this.placeDetailsResults);
+  // console.log('auteur du premier commentaire:', this.placeDetailsResults);
+  // ['result']['reviews'][i]['rating'] ???
+}, 800);
   }
 }
-
-/*
-interface Review {
-  author_name: string;
-  profile_photo_url: string;
-  rating: number;
-  relative_time_description: string;
-  text: string;
-}
- */
