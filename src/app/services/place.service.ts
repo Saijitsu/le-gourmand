@@ -125,16 +125,17 @@ export class PlaceService implements OnInit {
   }
 
   // Review Test 07/01/2019
-  getDetail() {
+  getDetails(restaurantIndex: number) {
   const myDiv = <HTMLDivElement>document.createElement('div');
   const service = new google.maps.places.PlacesService(myDiv);
 
   service.getDetails({
-    placeId: this.restaurants[this.entry].placeId, // insert ID here ex:'ChIJ38ZsTHD-EUgRaFUkx0PlZX8'
+    placeId: this.restaurants[restaurantIndex].placeId, // insert ID here ex:'ChIJ38ZsTHD-EUgRaFUkx0PlZX8'
     fields: ['review']
   }, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      this.placeDetailsResults.push(results);
+      this.restaurants[restaurantIndex].reviews.splice(0, 0, ...results.reviews);
+      console.log(this.restaurants[restaurantIndex]);
     }
   }, (error) => {
     console.log('Le chargement des données google places detail ne fonctionne pas:', error);

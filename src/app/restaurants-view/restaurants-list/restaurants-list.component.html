@@ -1,6 +1,6 @@
 <ul class="groupe-list">
   <cdk-virtual-scroll-viewport itemSize="100%">
-    <ng-container *ngFor="let restaurant of restaurants">
+    <ng-container *ngFor="let restaurant of restaurants; let i = index">
       <li fxLayout="column" fxLayoutAlign="space-around none" id="RestaurantId{{restaurant.id}}">
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <h1>Restaurant n°{{restaurant.id}}</h1>
@@ -18,7 +18,7 @@
           </div>
         </div>
         <div fxLayout="row" fxLayoutAlign="end center">
-        <button mat-fab (click)="showReviews ? showReviews = false: showReviews = true;">Consulter les avis</button>
+        <button mat-fab (click)="showReviews ? showReviews = false: getRestaurantDetails(i);">Consulter les avis</button>
         <button mat-fab (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false">Ajouter un avis</button>
         </div>
         <div *ngIf="showReviews">

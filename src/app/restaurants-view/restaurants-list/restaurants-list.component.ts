@@ -19,20 +19,11 @@ export class RestaurantsListComponent implements OnInit {
 // Array of reviews
   reviews: Review;
 
-  // Review Test 07/01/2019
-  placeDetailsResults: any[];
-
 // Show/Hide review element
   showReviews = false;
   showAddReview = false;
 
   constructor(public placeService: PlaceService) {
-/* this.reviews = {
-  author_name: 'Testeur',
-  profile_photo_url: 'http://toto',
-rating: 3,
-relative_time_description: 'hier',
-text: 'Super bon'}; */
   }
 
   ngOnInit() {
@@ -42,14 +33,14 @@ text: 'Super bon'}; */
     }, 300);
 
 // Review Test 07/01/2019
-setTimeout(() => {
-  // console.log('la methode getRestaurants() fait disparaître la carte?!');
-  this.placeService.entry = 0;
-  this.placeService.getDetail();
-  this.placeDetailsResults =  this.placeService.placeDetailsResults;
-    console.log('Contenu de la review:', this.placeDetailsResults);
-  // console.log('auteur du premier commentaire:', this.placeDetailsResults);
-  // ['result']['reviews'][i]['rating'] ???
-}, 800);
+/* setTimeout(() => {
+this.placeService.getDetails(0);
+}, 800); */
+  }
+
+  getRestaurantDetails(restaurantIndex: number) {
+    this.showReviews = true;
+    this.placeService.getDetails(restaurantIndex);
+  //  console.log(this);
   }
 }
