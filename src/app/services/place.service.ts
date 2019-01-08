@@ -1,3 +1,4 @@
+import { RestaurantsListComponent } from './../restaurants-view/restaurants-list/restaurants-list.component';
 import { Review } from './../restaurants-view/restaurant-reviews/restaurant-review.component';
 import { Injectable, OnInit } from '@angular/core';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
@@ -108,12 +109,12 @@ export class PlaceService implements OnInit {
                 ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
                 : '/assets/images/noPhoto.png', // alternative photo
               this.placesList[i].opening_hours,
-              [{
+              [/* {
                       author_name: 'Testeur',
                       profile_photo_url: 'http://toto',
                       rating: 3,
                       relative_time_description: 'hier',
-                      text: 'Super bon'}],
+                      text: 'Super bon'} */],
             );
             this.restaurants.push(addNewRestaurants);
           }
@@ -135,7 +136,7 @@ export class PlaceService implements OnInit {
   }, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       this.restaurants[restaurantIndex].reviews.splice(0, 0, ...results.reviews);
-      console.log(this.restaurants[restaurantIndex]);
+      console.log(this.restaurants[restaurantIndex].reviews);
     }
   }, (error) => {
     console.log('Le chargement des données google places detail ne fonctionne pas:', error);

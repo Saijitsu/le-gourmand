@@ -21,6 +21,7 @@ import { RestaurantsViewComponent } from './restaurants-view/restaurants-view.co
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { StarsComponent } from './stars/stars.component';
+import { RestaurantComponent } from './restaurants-view/restaurant/restaurant.component';
 
 
 const appRoutes: Routes = [
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     SignupComponent,
     SigninComponent,
     RestaurantsViewComponent,
-    StarsComponent
+    StarsComponent,
+    RestaurantComponent
   ],
   imports: [
     BrowserModule,
