@@ -1,9 +1,33 @@
-.review{
+.review {
+    padding: 2px;
 
-}
-.profile_photo{
+  .profile {
 
-}
-.text_review{
+    .profile-photo {
+      max-width: 128;
+    }
+
+    .author-name {
+      font-size: 1em;
+      font-weight: bolder;
+    }
+  }
+
+  .review-contain {
+    max-width: 400;
+
+    .rating-date {
+      p{
+        padding-left: 10%;
+      }
+    }
+
+    .text-review {
+      background-color: rgba(240, 236, 236, 0.589);
+      padding: 10%;
+      border-radius: 15px;
+      font-size: 1,3em;
+    }
+  }
 
 }

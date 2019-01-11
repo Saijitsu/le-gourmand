@@ -1,15 +1,14 @@
 
   <div fxLayout="row" fxLayoutAlign="space-around center" class="review">
-  <div fxLayout="column" fxLayoutAlign="space-around center">
-    <div class="profile_photo"><img src="{{review.profile_photo_url}}"></div>
-    <h3>{{review.author_name}}</h3>
+  <div  fxLayout="column" fxLayoutAlign="start center" class="profile" fxFlex="20">
+    <div class="profile-photo"><img src="{{review.profile_photo_url}}"></div>
+    <h3 class="author-name">{{review.author_name}}</h3>
   </div>
-  <div fxLayout="column" fxLayoutAlign="space-around center">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <app-stars [rating]="review.rating"></app-stars>
+  <div fxLayout="column" fxLayoutAlign="space-around center" class="review-contain" fxFlex="80">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="rating-date">
+      <div *ngIf="review?.rating"><app-stars [rating]="review.rating"></app-stars></div>
       <p>{{review.relative_time_description}}</p>
     </div>
-    <p class="text_review">{{review.text}}</p>
+    <p class="text-review">{{review.text}}</p>
   </div>
 </div>
-

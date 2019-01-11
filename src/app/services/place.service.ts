@@ -1,4 +1,3 @@
-import { RestaurantsListComponent } from './../restaurants-view/restaurants-list/restaurants-list.component';
 import { Review } from './../restaurants-view/restaurant-reviews/restaurant-review.component';
 import { Injectable, OnInit } from '@angular/core';
 import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
@@ -25,26 +24,17 @@ export class PlaceService implements OnInit {
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
-    this.zoom = 10;
+    this.zoom = 15;
     this.latitude = 47.2632799;
     this.longitude = -1.5164536;
 
     // set current position
     this.setCurrentPosition();
-    // console.log('coordonnées actualisées', this.location);
 
     // create the places list of restaurants
     setTimeout(() => {
       this.getRestaurants();
-      // console.log('la methode getRestaurants() fait disparaître la carte?!');
     }, 200);
-
-/* // Review Test 07/01/2018
- setTimeout(() => {
-    this.entry = 0;
-    this.getDetail();
-    console.log('Contenu de la review:', this.detailData);
-  }, 800); */
   }
 
   ngOnInit() {
@@ -67,7 +57,6 @@ export class PlaceService implements OnInit {
 
   private getRestaurants() {
     return this.mapAPIloader.load().then(() => {
-      // const service = new google.maps.places.PlacesService(<HTMLDivElement>document.getElementsByTagName('agm-map')[0]);
       const myDiv = <HTMLDivElement>document.createElement('div');
       const service = new google.maps.places.PlacesService(myDiv);
 
@@ -87,34 +76,33 @@ export class PlaceService implements OnInit {
               this.placesList[i].geometry.location.lng(),
               (i + 1).toString(),
               this.placesList[i].name,
-              this.placesList[i].rating,
+              this.placesList[i].rating !== 'undefined'
+                ? this.placesList[i].rating
+                : '0', // Rating of 0 if undefined,
               typeof results[i].photos !== 'undefined' // Check the photo array is present for each
-                ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
+                ? results[i].photos[0].getUrl()
                 : '/assets/images/noPhoto.png', // alternative photo,
-             false,
-             'DROP'
+              false,
+              'DROP'
             );
             this.markers.push(addNewMarker);
 
             // Add new restaurants
-            const addNewRestaurants = new Restaurant (
-              i + 1,
+            const addNewRestaurants = new Restaurant(
+              i,
               this.placesList[i].name,
               this.placesList[i].vicinity,
               this.placesList[i].geometry.location.lat(),
               this.placesList[i].geometry.location.lng(),
-              this.placesList[i].rating,
+              this.placesList[i].rating !== 'undefined'
+                ? this.placesList[i].rating
+                : '0', // Rating of 0 if undefined,
               this.placesList[i].place_id,
               typeof results[i].photos !== 'undefined' // Check the photo array is present for each
-                ? results[i].photos[0].getUrl(/*{'maxWidth': 100, 'maxHeight': 100}*/)
+                ? results[i].photos[0].getUrl()
                 : '/assets/images/noPhoto.png', // alternative photo
               this.placesList[i].opening_hours,
-              [/* {
-                      author_name: 'Testeur',
-                      profile_photo_url: 'http://toto',
-                      rating: 3,
-                      relative_time_description: 'hier',
-                      text: 'Super bon'} */],
+              []
             );
             this.restaurants.push(addNewRestaurants);
           }
@@ -127,27 +115,21 @@ export class PlaceService implements OnInit {
 
   // Review Test 07/01/2019
   getDetails(restaurantIndex: number) {
-  const myDiv = <HTMLDivElement>document.createElement('div');
-  const service = new google.maps.places.PlacesService(myDiv);
-
-  service.getDetails({
-    placeId: this.restaurants[restaurantIndex].placeId, // insert ID here ex:'ChIJ38ZsTHD-EUgRaFUkx0PlZX8'
-    fields: ['review']
-  }, (results, status) => {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      this.restaurants[restaurantIndex].reviews.splice(0, 0, ...results.reviews);
-      console.log(this.restaurants[restaurantIndex].reviews);
-    }
-  }, (error) => {
-    console.log('Le chargement des données google places detail ne fonctionne pas:', error);
-  });
-}
+    const myDiv = <HTMLDivElement>document.createElement('div');
+    const service = new google.maps.places.PlacesService(myDiv);
+    service.getDetails({
+      placeId: this.restaurants[restaurantIndex].placeId,
+    }, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        this.restaurants[restaurantIndex].reviews.splice(0, this.restaurants[restaurantIndex].reviews.length, ...results.reviews);
+      }
+    }, (error) => {
+      console.log('Le chargement des données google places detail ne fonctionne pas:', error);
+    });
+  }
 }
 
-
-// Create Marker Data
-// return une instance de MarkerList (défini la structure) avec CreateMarker.create() (implémente la structure)
-// rename: Marker
+// Create Marker
 export class Marker {
   constructor(
     public latitude: number,
@@ -161,7 +143,7 @@ export class Marker {
 }
 
 // Create Restaurants Data
- export class Restaurant {
+export class Restaurant {
   constructor(
     public id: number,
     public name: string,

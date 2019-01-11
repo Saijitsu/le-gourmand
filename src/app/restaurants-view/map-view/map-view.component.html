@@ -9,7 +9,6 @@
 (mapClick)="mapClicked($event)"
 [usePanning]="true"
 >
-<!-- [label]="m.label" can be add in agm marker-->
   <agm-marker *ngFor="let m of markers; let i = index"
   [latitude]="m.latitude"
     [longitude]="m.longitude"
@@ -21,7 +20,7 @@
     (mouseOut)="markerOut(m)"
     (markerClick)="clickedMarker(m.label)">
     <agm-info-window #infowindow>
-      <strong>{{m.label}}: {{m.name}}</strong>
+      <strong><!-- {{m.label}}:  -->{{m.name}}</strong>
       <div fxLayout="column" fxLayoutAlign="space-around center">
         <img src={{m.photo}} width="150">
         <app-stars [rating]="m.rating"></app-stars>

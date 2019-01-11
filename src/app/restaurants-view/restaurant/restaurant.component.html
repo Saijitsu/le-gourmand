@@ -1,6 +1,7 @@
 <li fxLayout="column" fxLayoutAlign="space-around none" id="RestaurantId{{restaurant.id}}">
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>Restaurant n°{{restaurant.id}}</h1>
+    <!--     <h1>Restaurant n°{{restaurant.id}}</h1>
+ -->
     <h1>{{restaurant.name}}</h1>
     <aside fxLayout="row" fxLayoutAlign="space-between center">
       <app-stars [rating]="restaurant.rating"></app-stars>
@@ -15,14 +16,33 @@
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center">
-  <button mat-fab (click)="showReviews ? showReviews = false: showReviews = true; this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id);">Consulter les avis</button>
-  <button mat-fab (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false">Ajouter un avis</button>
+    <button mat-fab (click)="showReviews ? showReviews = false: showReviews = true; this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id);">
+      Consulter les avis</button>
+    <button mat-fab (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false">
+      Ajouter un avis</button>
   </div>
-  <div *ngIf="showReviews">La liste des reviews!
-    <ng-container *ngFor="let review of this.restaurantsListComponent.restaurants[this.restaurant.id].reviews">
-      <app-restaurant-review [review]="review"></app-restaurant-review>
+  <div *ngIf="showReviews">
+    <h1 *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined">L'avis des gourmands:</h1>
+    <h1 *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] === undefined">Soyez le premier à laisser un avis!</h1>
+    <ng-container *ngFor="let review of (this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews)">
+        <app-restaurant-review *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined" [review]="review">
+        </app-restaurant-review>
     </ng-container>
   </div>
-  <div *ngIf="showAddReview">Ajouter une Review!</div>
+  <div *ngIf="showAddReview">Ajouter une Review!
+    <app-restaurant-add-review></app-restaurant-add-review>
+  </div>
 </li>
-<!-- showReviews ? showReviews = false:  -->
+
+<!-- ERROR TypeError: Cannot read property 'profile_photo_url' of undefined
+    at Object.eval [as updateRenderer] (ng:///AppModule/RestaurantReviewComponent.ngfactory.js:86)
+    at Object.debugUpdateRenderer [as updateRenderer] (vendor.js:89116)
+    at checkAndUpdateView (vendor.js:88491)
+    at callViewAction (vendor.js:88727)
+    at execComponentViewsAction (vendor.js:88669)
+    at checkAndUpdateView (vendor.js:88492)
+    at callViewAction (vendor.js:88727)
+    at execEmbeddedViewsAction (vendor.js:88690)
+    at checkAndUpdateView (vendor.js:88487)
+    at callViewAction (vendor.js:88727)
+View_RestaurantReviewComponent_0 @ ng:///AppModule/RestaurantReviewComponent.ngfactory.js:35 -->

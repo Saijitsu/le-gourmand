@@ -22,7 +22,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { StarsComponent } from './stars/stars.component';
 import { RestaurantComponent } from './restaurants-view/restaurant/restaurant.component';
-
+import { RestaurantAddReviewComponent } from './restaurants-view/restaurant-add-review/restaurant-add-review.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     SigninComponent,
     RestaurantsViewComponent,
     StarsComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    RestaurantAddReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ const appRoutes: Routes = [
     ScrollingModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatFormFieldModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',
       libraries: ['places']

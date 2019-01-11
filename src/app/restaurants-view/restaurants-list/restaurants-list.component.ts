@@ -15,28 +15,18 @@ export class RestaurantsListComponent implements OnInit {
   viewport: CdkVirtualScrollViewport;
 
   // Array of restaurants
-  restaurants: Restaurant[];
+  public restaurants: Restaurant[] = this.placeService.restaurants;
 
   // Array of reviews
-  reviews: Review;
+  public reviews: Review[];
 
-  constructor(public placeService: PlaceService, /* public restaurantComponent: RestaurantComponent */) {
+  constructor(public placeService: PlaceService) {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.restaurants = this.placeService.restaurants;
-      console.log('affichage de la liste des restaurants après 300 millisecondes', this.restaurants);
-    }, 300);
   }
 
   getRestaurantDetails(restaurantIndex: number) {
-    // showReviews = true;
-    if (this.restaurants[restaurantIndex].reviews === undefined || this.restaurants[restaurantIndex].reviews.length === 0) {
-      // array empty or does not exist
-      this.placeService.getDetails(restaurantIndex);
-      this.restaurants[restaurantIndex].reviews = this.placeService.restaurants[restaurantIndex].reviews;
-      console.log('affiche le contenu de "this.restaurants[restaurantIndex].reviews":', this.restaurants[restaurantIndex].reviews);
-    }
+    this.placeService.getDetails(restaurantIndex);
   }
 }
