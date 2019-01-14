@@ -64,25 +64,7 @@ export class PlaceService implements OnInit {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
             this.placesList.push(results[i]);
-
-            // Add new markers // Use create new markers
-            const addNewMarker = new Marker(
-              this.placesList[i].geometry.location.lat(),
-              this.placesList[i].geometry.location.lng(),
-              (i + 1).toString(),
-              this.placesList[i].name,
-              this.placesList[i].rating !== 'undefined'
-                ? this.placesList[i].rating
-                : '0', // Rating of 0 if undefined,
-              typeof results[i].photos !== 'undefined' // Check the photo array is present for each
-                ? results[i].photos[0].getUrl()
-                : '/assets/images/noPhoto.png', // alternative photo,
-              false,
-              'DROP'
-            );
-            this.markers.push(addNewMarker);
-
-            // Add new restaurants
+// Add new restaurants
             const addNewRestaurants = new Restaurant(
               i,
               this.placesList[i].name,
@@ -125,31 +107,20 @@ getDetails(restaurantIndex: number) {
   }
 }
 
-// Create Marker
-export class Marker {
-  constructor(
-    public latitude: number,
-    public longitude: number,
-    public label: string,
-    public name: string,
-    public rating: string,
-    public photo: any,
-    public draggable: boolean,
-    public animation: any) { }
-}
-
 // Create Restaurants Data
 export class Restaurant {
   constructor(
     public id: number,
     public name: string,
     public vinanityAdress: string,
-    public latitude: string,
-    public longitude: string,
+    public latitude: number,
+    public longitude: number,
     public rating: string,
     public placeId: string,
     public photo: any,
     public openingHours: string,
-    public reviews: Review[]) { }
+    public reviews: Review[],
+    public draggable: boolean = false,
+    public animation: any = 'DROP') { }
 }
 

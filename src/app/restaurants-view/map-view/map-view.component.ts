@@ -1,4 +1,4 @@
-import { PlaceService, Marker } from '../../services/place.service';
+import { PlaceService, Restaurant } from '../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MouseEvent, AgmMap, GoogleMapsAPIWrapper, AgmInfoWindow } from '@agm/core';
 
@@ -21,7 +21,7 @@ export class MapViewComponent implements OnInit {
   longitude: number;
 
   // Array of markers on google map.
-  markers: Marker[];
+  markers: Restaurant[] = this.placeService.restaurants;
 
   private previous: any;
 
@@ -40,26 +40,24 @@ export class MapViewComponent implements OnInit {
     }, 300);
 
     setTimeout(() => {
-      this.markers = this.placeService.markers;
-      // this.placesList = this.placeService.placesList;
-      //  console.log('Après 400 millisecondes => Création des markers:', this.markers);
+      this.markers = this.placeService.restaurants;
     }, 400);
   }
 
   // Marker Over
-  markerOver(m: Marker) {
+  markerOver(m: Restaurant) {
     m.animation = 'BOUNCE';
   }
 
   // Marker Out
-  markerOut(m: Marker) {
+  markerOut(m: Restaurant) {
     m.animation = '';
   }
 
   // Click to a marker
-  clickedMarker(label, infoWindow) {
+  clickedMarker(id, infoWindow) {
     // verifier que le marker existe!
-    document.querySelector('#RestaurantId' + label).scrollIntoView();
+    document.querySelector('#RestaurantId' + id).scrollIntoView();
     if (this.previous) {
       this.previous.close();
     }
@@ -67,34 +65,25 @@ export class MapViewComponent implements OnInit {
   }
 
   // Click to creat a new marker
-  // ouvrir une modale (push restaurants + markers)
+  // ouvrir une modale (push restaurants)
   mapClicked($event: MouseEvent) {
     this.markers.push({
       latitude: $event.coords.lat,
       longitude: $event.coords.lng,
-      label: (this.markers.length + 1).toString(), // Nombre totals des restaurants de la zone +1
+      id: (this.markers.length + 1), // Nombre totals des restaurants de la zone +1
       name: 'Créez-moi', // A récupérer avec input,
       rating: '',
       photo: '/assets/images/noPhoto.png',
       draggable: true,
-      animation: 'DROP'
+      animation: 'DROP',
+      vinanityAdress: '',
+      placeId: '',
+      openingHours: '',
+      reviews: []
     });
   }
 
-  markerDragEnd(m: Marker, $event: MouseEvent) {
-    //  console.log('New Restaurant ici?', m, $event);
+  markerDragEnd(m: Restaurant, $event: MouseEvent) {
   }
 }
 
-
-/*
-// just an interface for type safety.
-interface Marker {
-  latitude: number;
-  longitude: number;
-  label: string;
-  name: string;
-  rating: string;
-  draggable: boolean;
-  animation: 'DROP' | 'BOUNCE' | '';
-} */
