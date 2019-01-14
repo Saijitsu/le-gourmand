@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RestaurantComponent } from '../restaurant/restaurant.component';
 
 @Component({
   selector: 'app-restaurant-review',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class RestaurantReviewComponent implements OnInit {
   @Input() review: Review;
-  constructor() {
+  constructor(public restaurantComponent: RestaurantComponent) {
    }
   ngOnInit() {
   }

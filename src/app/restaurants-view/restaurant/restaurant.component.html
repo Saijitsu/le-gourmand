@@ -22,27 +22,19 @@
       Ajouter un avis</button>
   </div>
   <div *ngIf="showReviews">
-    <h1 *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined">L'avis des gourmands:</h1>
-    <h1 *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] === undefined">Soyez le premier à laisser un avis!</h1>
+    <h1 *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined">
+      L'avis des gourmands:
+    </h1>
+    <h1 *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] === undefined">
+      Soyez le premier à laisser un avis!
+    </h1>
     <ng-container *ngFor="let review of (this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews)">
         <app-restaurant-review *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined" [review]="review">
         </app-restaurant-review>
     </ng-container>
   </div>
-  <div *ngIf="showAddReview">Ajouter une Review!
+  <div *ngIf="showAddReview">
     <app-restaurant-add-review></app-restaurant-add-review>
   </div>
 </li>
 
-<!-- ERROR TypeError: Cannot read property 'profile_photo_url' of undefined
-    at Object.eval [as updateRenderer] (ng:///AppModule/RestaurantReviewComponent.ngfactory.js:86)
-    at Object.debugUpdateRenderer [as updateRenderer] (vendor.js:89116)
-    at checkAndUpdateView (vendor.js:88491)
-    at callViewAction (vendor.js:88727)
-    at execComponentViewsAction (vendor.js:88669)
-    at checkAndUpdateView (vendor.js:88492)
-    at callViewAction (vendor.js:88727)
-    at execEmbeddedViewsAction (vendor.js:88690)
-    at checkAndUpdateView (vendor.js:88487)
-    at callViewAction (vendor.js:88727)
-View_RestaurantReviewComponent_0 @ ng:///AppModule/RestaurantReviewComponent.ngfactory.js:35 -->

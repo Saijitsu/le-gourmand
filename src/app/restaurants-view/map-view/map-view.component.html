@@ -18,8 +18,8 @@
     [animation]="m.animation"
     (mouseOver)="markerOver(m)"
     (mouseOut)="markerOut(m)"
-    (markerClick)="clickedMarker(m.label)">
-    <agm-info-window #infowindow>
+    (markerClick)="clickedMarker(m.label, infoWindow)">
+    <agm-info-window #infoWindow>
       <strong><!-- {{m.label}}:  -->{{m.name}}</strong>
       <div fxLayout="column" fxLayoutAlign="space-around center">
         <img src={{m.photo}} width="150">

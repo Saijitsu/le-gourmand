@@ -1,0 +1,21 @@
+$color1-title: #C30000;
+$color2-title: #F29800;
+
+mat-icon {
+  color: $color2-title;
+}
+
+div{
+  .author-name{
+    width: 50%;
+    min-width: 150px;
+  }
+  .commentary{
+    width: 80%;
+    min-width: 180px;
+  }
+  .star-rating{
+     width: 20%;
+    min-width: 180px;
+  }
+}

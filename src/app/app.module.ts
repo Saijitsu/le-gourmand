@@ -1,4 +1,4 @@
-import { MatToolbarModule, MatListModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatListModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule } from '@angular/material';
 import { PlaceService } from './services/place.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,7 +23,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { StarsComponent } from './stars/stars.component';
 import { RestaurantComponent } from './restaurants-view/restaurant/restaurant.component';
 import { RestaurantAddReviewComponent } from './restaurants-view/restaurant-add-review/restaurant-add-review.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -53,6 +52,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FlexLayoutModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatListModule,
@@ -60,6 +60,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatIconModule,
     MatFormFieldModule,
+    MatInputModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',
       libraries: ['places']

@@ -18,10 +18,6 @@ export class PlaceService implements OnInit {
   public markers = [];
   public restaurants = [];
 
-  // Review Test 07/01/2019
-  public placeDetailsResults = [];
-  public entry: number;
-
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
     this.zoom = 15;
@@ -59,7 +55,6 @@ export class PlaceService implements OnInit {
     return this.mapAPIloader.load().then(() => {
       const myDiv = <HTMLDivElement>document.createElement('div');
       const service = new google.maps.places.PlacesService(myDiv);
-
 
       service.nearbySearch({
         location: { lat: this.latitude, lng: this.longitude },
@@ -113,8 +108,9 @@ export class PlaceService implements OnInit {
     });
   }
 
-  // Review Test 07/01/2019
-  getDetails(restaurantIndex: number) {
+// Get details (reviews)
+
+getDetails(restaurantIndex: number) {
     const myDiv = <HTMLDivElement>document.createElement('div');
     const service = new google.maps.places.PlacesService(myDiv);
     service.getDetails({
