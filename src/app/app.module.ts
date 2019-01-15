@@ -23,6 +23,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { StarsComponent } from './stars/stars.component';
 import { RestaurantComponent } from './restaurants-view/restaurant/restaurant.component';
 import { RestaurantAddReviewComponent } from './restaurants-view/restaurant-add-review/restaurant-add-review.component';
+import { AddNewRestaurantComponent } from './restaurants-view/add-new-restaurant/add-new-restaurant.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     RestaurantsViewComponent,
     StarsComponent,
     RestaurantComponent,
-    RestaurantAddReviewComponent
+    RestaurantAddReviewComponent,
+    AddNewRestaurantComponent
   ],
   imports: [
     BrowserModule,

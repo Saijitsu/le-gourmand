@@ -1,6 +1,6 @@
 import { PlaceService, Restaurant } from '../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MouseEvent, AgmMap, GoogleMapsAPIWrapper, AgmInfoWindow } from '@agm/core';
+import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 
 
 @Component({
@@ -24,6 +24,8 @@ export class MapViewComponent implements OnInit {
   markers: Restaurant[] = this.placeService.restaurants;
 
   private previous: any;
+  public markerLocation: any;
+  public markerAdress: any;
 
   constructor(public placeService: PlaceService, public gMaps: GoogleMapsAPIWrapper) {
     // Préchargement de la carte, voir pour actualiser ensuite*
@@ -67,16 +69,26 @@ export class MapViewComponent implements OnInit {
   // Click to creat a new marker
   // ouvrir une modale (push restaurants)
   mapClicked($event: MouseEvent) {
+
+ // Zone de test =========>
+    /* this.markerLocation = fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' +
+    $event.coords.lat + ',' +
+    $event.coords.lng + '&key=AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets');
+    console.log('result de this.markerLocation:', this.markerLocation); */
+    this.markerAdress = 'this.markerLocation[1].formatted_address';
+/* console.log('result de this.markerAdress:', this.markerAdress[1].formatted_address);
+ */ // Zone de test <==========
+
     this.markers.push({
       latitude: $event.coords.lat,
       longitude: $event.coords.lng,
       id: (this.markers.length + 1), // Nombre totals des restaurants de la zone +1
       name: 'Créez-moi', // A récupérer avec input,
-      rating: '',
+      rating: '0', // rating by default
       photo: '/assets/images/noPhoto.png',
       draggable: true,
       animation: 'DROP',
-      vinanityAdress: '',
+      vinanityAdress: this.markerAdress,  // Zone de test
       placeId: '',
       openingHours: '',
       reviews: []

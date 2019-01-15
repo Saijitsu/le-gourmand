@@ -64,7 +64,7 @@ export class PlaceService implements OnInit {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
             this.placesList.push(results[i]);
-// Add new restaurants
+            // Add new restaurants
             const addNewRestaurants = new Restaurant(
               i,
               this.placesList[i].name,
@@ -90,9 +90,9 @@ export class PlaceService implements OnInit {
     });
   }
 
-// Get details (reviews)
+  // Get details (reviews)
 
-getDetails(restaurantIndex: number) {
+  getDetails(restaurantIndex: number) {
     const myDiv = <HTMLDivElement>document.createElement('div');
     const service = new google.maps.places.PlacesService(myDiv);
     service.getDetails({
@@ -106,7 +106,6 @@ getDetails(restaurantIndex: number) {
     });
   }
 }
-
 // Create Restaurants Data
 export class Restaurant {
   constructor(
