@@ -1,4 +1,12 @@
-import { MatToolbarModule, MatListModule, MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatListModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatInputModule,
+  MatDialogModule,
+MatCardModule } from '@angular/material';
 import { PlaceService } from './services/place.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { RestaurantsViewComponent } from './restaurants-view/restaurants-view.component';
@@ -24,6 +32,7 @@ import { StarsComponent } from './stars/stars.component';
 import { RestaurantComponent } from './restaurants-view/restaurant/restaurant.component';
 import { RestaurantAddReviewComponent } from './restaurants-view/restaurant-add-review/restaurant-add-review.component';
 import { AddNewRestaurantComponent } from './restaurants-view/add-new-restaurant/add-new-restaurant.component';
+import { NewRestaurantDialogComponent } from './restaurants-view/new-restaurant-dialog/new-restaurant-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -49,7 +58,8 @@ const appRoutes: Routes = [
     StarsComponent,
     RestaurantComponent,
     RestaurantAddReviewComponent,
-    AddNewRestaurantComponent
+    AddNewRestaurantComponent,
+    NewRestaurantDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +73,9 @@ const appRoutes: Routes = [
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    MatCardModule,
+    FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',
       libraries: ['places']
@@ -70,7 +83,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthService, AuthGuardService, PlaceService, GoogleMapsAPIWrapper],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NewRestaurantDialogComponent
+  ],
 })
 export class AppModule { }
 

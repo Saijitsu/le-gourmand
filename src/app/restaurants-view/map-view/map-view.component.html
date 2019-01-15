@@ -20,11 +20,12 @@
     (mouseOut)="markerOut(m)"
     (markerClick)="clickedMarker(m.id, infoWindow)">
     <agm-info-window #infoWindow>
-      <strong>{{m.name}}</strong>
       <div fxLayout="column" fxLayoutAlign="space-around center">
+        <strong>{{m.name}}</strong>
         <img src={{m.photo}} width="150">
         <app-stars [rating]="m.rating"></app-stars>
       </div>
+      <app-add-new-restaurant *ngIf="m.name === 'Nouveau Restaurant!'"></app-add-new-restaurant>
     </agm-info-window>
   </agm-marker>
 

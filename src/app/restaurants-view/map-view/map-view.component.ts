@@ -1,7 +1,8 @@
 import { PlaceService, Restaurant } from '../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
-
+/* import { NewRestaurantDialogComponent } from '../new-restaurant-dialog/new-restaurant-dialog.component';
+import { MatDialog } from '@angular/material'; */
 
 @Component({
   selector: 'app-map-view',
@@ -26,8 +27,12 @@ export class MapViewComponent implements OnInit {
   private previous: any;
   public markerLocation: any;
   public markerAdress: any;
+  public dialogResult = '';
 
-  constructor(public placeService: PlaceService, public gMaps: GoogleMapsAPIWrapper) {
+  constructor(public placeService: PlaceService,
+    public gMaps: GoogleMapsAPIWrapper,
+   /*  public addNewRestaurantDialog: NewRestaurantDialogComponent,
+    public dialog: MatDialog */) {
     // Préchargement de la carte, voir pour actualiser ensuite*
     this.latitude = this.placeService.latitude;
     this.longitude = this.placeService.longitude;
@@ -69,7 +74,6 @@ export class MapViewComponent implements OnInit {
   // Click to creat a new marker
   // ouvrir une modale (push restaurants)
   mapClicked($event: MouseEvent) {
-
  // Zone de test =========>
     /* this.markerLocation = fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' +
     $event.coords.lat + ',' +
@@ -78,12 +82,11 @@ export class MapViewComponent implements OnInit {
     this.markerAdress = 'this.markerLocation[1].formatted_address';
 /* console.log('result de this.markerAdress:', this.markerAdress[1].formatted_address);
  */ // Zone de test <==========
-
     this.markers.push({
       latitude: $event.coords.lat,
       longitude: $event.coords.lng,
       id: (this.markers.length + 1), // Nombre totals des restaurants de la zone +1
-      name: 'Créez-moi', // A récupérer avec input,
+      name: 'Nouveau Restaurant!', // A récupérer avec input,
       rating: '0', // rating by default
       photo: '/assets/images/noPhoto.png',
       draggable: true,

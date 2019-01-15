@@ -1,0 +1,14 @@
+<div>
+  <h2 mat-dialog-title>NOUVEAU RESTAURANT GOURMAND</h2>
+  <hr>
+  <mat-dialog-content>
+    <p>Confirmez-nous le choix de nom du restaurant que vous avez localisez? Nous nous chargons de trouver sa photo et
+      de lui attribuer la bonne adresse!</p>
+    <strong>Nom du restaurant: {{data}}</strong>
+  </mat-dialog-content>
+  <hr>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-raised-button (click)="onCloseConfirm()">CONFIRMATION</button>
+    <button mat-raised-button (click)="onCloseCancel()">ANNULATION</button>
+  </mat-dialog-actions>
+</div>
