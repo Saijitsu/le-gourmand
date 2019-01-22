@@ -10,7 +10,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url("/assets/images/gastronomie-background.png"), linear-gradient(to right, rgb(255, 239, 186), rgb(255, 255, 255));
+  background-image: url("/assets/images/gastronomie-background.png"), linear-gradient(to right, rgb(255, 239, 186)20%, rgb(255, 255, 255));
   background-repeat: no-repeat;
   background-position: 15% 15%;
 }
@@ -28,7 +28,7 @@ ul {
 .groupe-list {
   color: rgb(34, 34, 34);
   list-style: none;
-  width: 100vh;
+  width: 100%;
   height: 70vh;
   padding: 0;
 

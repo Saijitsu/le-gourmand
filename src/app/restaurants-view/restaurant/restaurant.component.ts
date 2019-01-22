@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Restaurant } from './../../services/place.service';
 import { RestaurantsListComponent } from '../restaurants-list/restaurants-list.component';
 
@@ -13,7 +13,7 @@ public  showAddReview = false;
 
   @Input()restaurant: Restaurant[];
 
-  constructor(public restaurantsListComponent: RestaurantsListComponent) { }
+  constructor(public restaurantsListComponent: RestaurantsListComponent, private _eref: ElementRef) { }
 
   ngOnInit() {
   }

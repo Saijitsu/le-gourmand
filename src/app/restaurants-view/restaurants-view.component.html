@@ -1,8 +1,9 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill="">
-<section fxFlex="57">
-  <app-restaurants-list></app-restaurants-list>
-</section>
-<aside fxFlex="38">
+<app-loading *ngIf="showSpinner" fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill=""></app-loading>
+<div *ngIf="showContent" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around center" fxFlexFill="">
+  <section fxFlex="38">
+    <app-restaurants-list fxLayout="column"></app-restaurants-list>
+  </section>
+  <aside fxFlex="58">
   <app-map-view></app-map-view>
-</aside>
+  </aside>
 </div>

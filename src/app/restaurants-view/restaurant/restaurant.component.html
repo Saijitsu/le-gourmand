@@ -1,24 +1,23 @@
 <li fxLayout="column" fxLayoutAlign="space-around none" id="RestaurantId{{restaurant.id}}">
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <!--     <h1>Restaurant n°{{restaurant.id}}</h1>
- -->
     <h1>{{restaurant.name}}</h1>
     <aside fxLayout="row" fxLayoutAlign="space-between center">
       <app-stars [rating]="restaurant.rating"></app-stars>
       <p>{{restaurant.rating}}</p>
     </aside>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <div><img src={{restaurant.photo}} width="300"></div>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div><img src={{restaurant.photo}} width="300" height="170"></div>
     <div fxLayout="column" fxLayoutAlign="space-around center">
       <h2>Adresse</h2>
       <h3>{{restaurant.vinanityAdress}}</h3>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="end center">
-    <button mat-fab (click)="showReviews ? showReviews = false: showReviews = true; this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id);">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button mat-fab (click)="showReviews ? showReviews = false: showReviews = true; showAddReview = false;
+    this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id)" id="showReviews{{restaurant.id}}">
       Consulter les avis</button>
-    <button mat-fab (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false">
+    <button mat-fab (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false" id="showAddReview{{restaurant.id}}">
       Ajouter un avis</button>
   </div>
   <div *ngIf="showReviews">

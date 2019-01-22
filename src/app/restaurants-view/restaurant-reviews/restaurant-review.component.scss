@@ -1,6 +1,6 @@
 .review {
-    padding: 2px;
-    background: rgba(235, 152, 131, 0.76);
+  padding: 2px;
+  background: rgba(255, 255, 255, 0.76);
 
   .profile {
 
@@ -18,7 +18,7 @@
     max-width: 400;
 
     .rating-date {
-      p{
+      p {
         padding-left: 10%;
       }
     }
@@ -27,7 +27,17 @@
       background-color: rgba(240, 236, 236, 0.589);
       padding: 1%;
       border-radius: 15px;
-      font-size: 1,3em;
+      font-size: 1, 3em;
     }
   }
 }
+/* $color1-title: #C30000;
+$color2-title:#F29800;
+
+app-restaurant-review::after {
+  content: "";
+  height: 2px;
+  background: linear-gradient(to right,$color2-title 0%,$color1-title 50%, $color2-title 100%);
+  position: absolute;
+  width: 130px;
+} */

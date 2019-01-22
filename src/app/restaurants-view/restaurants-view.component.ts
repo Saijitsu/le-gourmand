@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlaceService } from '../services/place.service';
 
 declare let google: any;
 
@@ -10,9 +11,23 @@ declare let google: any;
 
 export class RestaurantsViewComponent implements OnInit {
 
-  constructor() {
-   }
+  public showSpinner: Boolean = true;
+  public showContent: Boolean = false;
+
+  constructor(public placeService: PlaceService) {
+  }
 
   ngOnInit() {
+ setTimeout(() => {
+      this.placeService.restaurants.length >= 1 ?
+        this.viewContent()
+        : setTimeout(() =>  {
+          this.viewContent();
+        }, 500);
+    }, 500);
+  }
+  viewContent() {
+    this.showSpinner = false;
+    this.showContent = true;
   }
 }

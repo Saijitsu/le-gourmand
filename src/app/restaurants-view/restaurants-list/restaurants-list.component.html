@@ -1,8 +1,59 @@
+<div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" id="star-selector">
+  <h3>Sélection entre</h3>
+  <mat-select placeholder="Note" [(value)]="minValue"  [(ngModel)]="minValue">
+    <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
+        {{minValue}}
+        <div *ngIf="this.minValue === '0'">
+          <mat-icon>star_border</mat-icon>
+        </div>
+        <div *ngIf="this.minValue !== '0'">
+          <mat-icon>star</mat-icon>
+        </div>
+      </span>
+    </mat-select-trigger>
+    <mat-option value="0">0 étoile <mat-icon>star_border</mat-icon>
+    </mat-option>
+    <mat-option value="1">1 étoile <mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="2">2 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="3">3 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="4">4 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="5">5 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+  </mat-select>
+  <h3>&amp;</h3>
+  <mat-select placeholder="note" [(value)]="maxValue" [(ngModel)]="maxValue">
+    <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
+        {{maxValue}}
+        <div *ngIf="this.maxValue === '0'">
+          <mat-icon>star_border</mat-icon>
+        </div>
+        <div *ngIf="this.maxValue !== '0'">
+          <mat-icon>star</mat-icon>
+        </div>
+      </span>
+    </mat-select-trigger>
+    <mat-option value="0">0 étoile <mat-icon>star_border</mat-icon>
+    </mat-option>
+    <mat-option value="1">1 étoile <mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="2">2 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="3">3 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="4">4 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+    <mat-option value="5">5 étoiles<mat-icon>star</mat-icon>
+    </mat-option>
+  </mat-select>
+</div>
 <ul class="groupe-list" fxFlex="100">
   <cdk-virtual-scroll-viewport itemSize="100%">
     <ng-container *ngFor="let restaurant of restaurants; let i = index">
-     <app-restaurant [restaurant]="restaurants[i]"></app-restaurant>
+      <app-restaurant [restaurant]="restaurants[i]"></app-restaurant>
     </ng-container>
   </cdk-virtual-scroll-viewport>
 </ul>
-

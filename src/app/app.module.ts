@@ -33,6 +33,7 @@ import { RestaurantComponent } from './restaurants-view/restaurant/restaurant.co
 import { RestaurantAddReviewComponent } from './restaurants-view/restaurant-add-review/restaurant-add-review.component';
 import { AddNewRestaurantComponent } from './restaurants-view/add-new-restaurant/add-new-restaurant.component';
 import { NewRestaurantDialogComponent } from './restaurants-view/new-restaurant-dialog/new-restaurant-dialog.component';
+import { LoadingComponent } from './restaurants-view/loading/loading.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     RestaurantComponent,
     RestaurantAddReviewComponent,
     AddNewRestaurantComponent,
-    NewRestaurantDialogComponent
+    NewRestaurantDialogComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

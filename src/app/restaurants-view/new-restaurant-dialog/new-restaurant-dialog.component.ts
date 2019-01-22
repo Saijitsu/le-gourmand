@@ -23,10 +23,12 @@ export class NewRestaurantDialogComponent implements OnInit {
     this.data === '' ?
     this.placeService.restaurants.splice(this.placeService.restaurants.length - 1, 1)
     : this.placeService.restaurants[this.placeService.restaurants.length - 1].name = this.data;
+    this.placeService.previousInfoWindow = null;
   }
 
   onCloseCancel() {
     this.thisDialogRef.close('Création annulée');
     this.placeService.restaurants.splice(this.placeService.restaurants.length - 1, 1);
+    this.placeService.previousInfoWindow = null;
   }
 }
