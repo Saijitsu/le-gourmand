@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import '~simplebar/dist/simplebar.css';
 
 html,
 body {
@@ -39,7 +40,7 @@ ul {
 
     li {
       min-height: 150px;
-      padding: 1%;
+      padding: 2%;
       background: rgba(228, 211, 181, 0.76);
       border-radius: 5px;
       margin-bottom: 5px;

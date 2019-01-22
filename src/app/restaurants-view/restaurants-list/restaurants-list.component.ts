@@ -2,6 +2,7 @@ import { Review } from './../restaurant-reviews/restaurant-review.component';
 import { PlaceService, Restaurant } from './../../services/place.service';
 import { Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import 'simplebar';
 
 @Component({
   selector: 'app-restaurants-list',
@@ -33,11 +34,15 @@ public minValue = '0';
     this.placeService.getDetails(restaurantIndex);
   }
 
-  minListValue() {
+  minListValueChild() {
     this.minValueOutput.emit(this.minValue);
   }
 
-  maxListValue() {
+  maxListValueChild() {
     this.maxValueOutput.emit(this.maxValue);
   }
 }
+/*
+minListValueParent($event) {
+  this.minListValue = $event;
+}*/
