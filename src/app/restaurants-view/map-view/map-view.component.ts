@@ -20,8 +20,8 @@ export class MapViewComponent implements OnInit {
   latitude: number;
   longitude: number;
 
-  // Array of markers on google map.
-  markers: Restaurant[] = this.placeService.restaurants;
+/*   // Array of markers on google map.
+  markers: Restaurant[] = this.placeService.customRestaurants; */
 
   public markerLocation: any;
   public dialogResult = '';
@@ -38,9 +38,9 @@ export class MapViewComponent implements OnInit {
       this.zoom = this.placeService.zoom;
     }, 300);
 
-    setTimeout(() => {
-      this.markers = this.placeService.restaurants;
-    }, 400);
+/*     setTimeout(() => {
+      this.markers = this.placeService.customRestaurants;
+    }, 400); */
   }
 
   // Marker Over
@@ -66,7 +66,7 @@ export class MapViewComponent implements OnInit {
   mapClicked($event: MouseEvent) {
 
     const addNewRestaurants = new Restaurant(
-      this.markers.length, // id:
+      this.placeService.customRestaurants.length, // id:
       'Nouveau Restaurant!', // name:
       'Adresse à déterminer!', // vinanityAdress:
       $event.coords.lat, //  latitude:

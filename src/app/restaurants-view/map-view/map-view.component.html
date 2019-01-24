@@ -9,7 +9,7 @@
 (mapClick)="mapClicked($event)"
 [usePanning]="true"
 >
-  <agm-marker *ngFor="let m of markers; let i = index"
+  <agm-marker *ngFor="let m of placeService.customRestaurants; let i = index"
   [latitude]="m.latitude"
     [longitude]="m.longitude"
     [markerDraggable]="m.draggable"

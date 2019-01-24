@@ -1,6 +1,6 @@
 import { Review } from './../restaurant-reviews/restaurant-review.component';
 import { PlaceService, Restaurant } from './../../services/place.service';
-import { Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import 'simplebar';
 
@@ -10,16 +10,15 @@ import 'simplebar';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-@Output()minValueOutput: EventEmitter<string> = new EventEmitter<string>();
-@Output()maxValueOutput: EventEmitter<string> = new EventEmitter<string>();
-public minValue = '0';
-  public maxValue = '5';
+
+  public minValue = this.placeService.minValue;
+  public maxValue = this.placeService.maxValue;
 
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
 
-  // Array of restaurants
-  public restaurants: Restaurant[] = this.placeService.restaurants;
+/*   // Array of restaurants
+  public restaurants: Restaurant[] = this.placeService.customRestaurants; */
 
   // Array of reviews
   public reviews: Review[];
@@ -28,21 +27,12 @@ public minValue = '0';
   }
 
   ngOnInit() {
+/*     setTimeout(() => {
+      this.restaurants = this.placeService.customRestaurants;
+    }, 400); */
   }
 
   getRestaurantDetails(restaurantIndex: number) {
     this.placeService.getDetails(restaurantIndex);
   }
-
-  minListValueChild() {
-    this.minValueOutput.emit(this.minValue);
-  }
-
-  maxListValueChild() {
-    this.maxValueOutput.emit(this.maxValue);
-  }
 }
-/*
-minListValueParent($event) {
-  this.minListValue = $event;
-}*/
