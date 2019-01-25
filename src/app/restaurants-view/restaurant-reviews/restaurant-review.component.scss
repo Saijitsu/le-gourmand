@@ -1,15 +1,15 @@
 .review {
   padding: 2px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.877);
 
   .profile {
 
     .profile-photo {
-      max-width: 128;
+      max-width: 32;
     }
 
     .author-name {
-      font-size: 1em;
+      font-size: 0.8em;
       font-weight: bolder;
     }
   }
@@ -20,24 +20,26 @@
     .rating-date {
       p {
         padding-left: 10%;
+        font-size: 0.9em;
       }
     }
 
     .text-review {
-      background-color: rgba(240, 236, 236, 0.589);
+      background-color: rgba(240, 236, 236, 0.63);
       padding: 1%;
       border-radius: 15px;
-      font-size: 1, 3em;
+      font-size: 0.9em;
     }
   }
 }
-/* $color1-title: #C30000;
+
+$color1-title: #C30000;
 $color2-title:#F29800;
 
-app-restaurant-review::after {
+.review::before {
   content: "";
   height: 2px;
   background: linear-gradient(to right,$color2-title 0%,$color1-title 50%, $color2-title 100%);
   position: absolute;
   width: 130px;
-} */
+}

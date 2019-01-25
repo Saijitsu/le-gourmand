@@ -1,17 +1,15 @@
-<div fxLayout="column" fxLayoutAlign="space-around center" fxFlexFill="">
-  <div>
+<mat-card-content fxLayout="column" fxLayoutAlign="space-around center" fxFlexFill="">
     <h2>Créer un compte</h2>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" id="email" class="form-control" formControlName="email">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" class="form-control" formControlName="password">
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="signupForm.invalid">Créer mon compte</button>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-around center" >
+           <mat-form-field>
+              <mat-label for="email">Email</mat-label>
+              <input  matInput  placeholder="Entrez votre Email" type="text" name="email" id="email"  formControlName="email">
+           </mat-form-field>
+           <mat-form-field >
+              <mat-label for="password">Mot de passe</mat-label>
+              <input  matInput  placeholder="Definissez votre mot de passe" type="password" name="password" id="password" formControlName="password">
+           </mat-form-field>
+           <button mat-flat-button type="submit" [disabled]="signupForm.invalid">Créer mon compte</button>
     </form>
-    <p class="text-danger">{{ errorMessage }}</p>
-  </div>
-</div>
+    <p>{{ errorMessage }}</p>
+  </mat-card-content>

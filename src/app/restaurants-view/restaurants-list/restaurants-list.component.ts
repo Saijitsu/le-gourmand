@@ -1,5 +1,5 @@
 import { Review } from './../restaurant-reviews/restaurant-review.component';
-import { PlaceService, Restaurant } from './../../services/place.service';
+import { PlaceService } from './../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import 'simplebar';
@@ -17,22 +17,16 @@ export class RestaurantsListComponent implements OnInit {
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
 
-/*   // Array of restaurants
-  public restaurants: Restaurant[] = this.placeService.customRestaurants; */
-
-  // Array of reviews
+// Array of reviews
   public reviews: Review[];
 
   constructor(public placeService: PlaceService) {
   }
 
   ngOnInit() {
-/*     setTimeout(() => {
-      this.restaurants = this.placeService.customRestaurants;
-    }, 400); */
   }
 
   getRestaurantDetails(restaurantIndex: number) {
-    this.placeService.getDetails(restaurantIndex);
+  this.placeService.getDetails(restaurantIndex);
   }
 }

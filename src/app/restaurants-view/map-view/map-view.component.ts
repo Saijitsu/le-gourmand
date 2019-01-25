@@ -1,6 +1,6 @@
 import { PlaceService, Restaurant } from '../../services/place.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MouseEvent, AgmMap, GoogleMapsAPIWrapper, LatLngLiteral } from '@agm/core';
+import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 import { RestaurantsViewComponent } from '../restaurants-view.component';
 
 @Component({
@@ -20,9 +20,6 @@ export class MapViewComponent implements OnInit {
   latitude: number;
   longitude: number;
 
-/*   // Array of markers on google map.
-  markers: Restaurant[] = this.placeService.customRestaurants; */
-
   public markerLocation: any;
   public dialogResult = '';
 
@@ -37,10 +34,6 @@ export class MapViewComponent implements OnInit {
       this.longitude = this.placeService.longitude;
       this.zoom = this.placeService.zoom;
     }, 300);
-
-/*     setTimeout(() => {
-      this.markers = this.placeService.customRestaurants;
-    }, 400); */
   }
 
   // Marker Over
@@ -71,8 +64,8 @@ export class MapViewComponent implements OnInit {
       'Adresse à déterminer!', // vinanityAdress:
       $event.coords.lat, //  latitude:
       $event.coords.lng, // longitude:
-      '0', // rating:
-      '', // placeId:
+      undefined, // rating:
+      '1', // placeId:
       '/assets/images/noPhoto.png', // photo:
       '', // openingHours:
       [], // reviews:
@@ -80,14 +73,11 @@ export class MapViewComponent implements OnInit {
       'DROP' // animation:
     );
     this.placeService.restaurants.push(addNewRestaurants);
-
-   /*  // Zone de test ======= ADRESS AUTO
+    this.placeService.getCustomRestaurants();
     this.placeService.clickLocation = $event.coords;
     this.placeService.getMarkerAdress();
-    // Zone de test <========== */
   }
 
   markerDragEnd(m: Restaurant, $event: MouseEvent) {
   }
 }
-

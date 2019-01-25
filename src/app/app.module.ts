@@ -6,6 +6,7 @@ import {
   MatSelectModule,
   MatInputModule,
   MatDialogModule,
+  MatButtonModule,
 MatCardModule } from '@angular/material';
 import { PlaceService } from './services/place.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatDialogModule,
     MatCardModule,
+    MatButtonModule,
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',

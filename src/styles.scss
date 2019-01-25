@@ -3,23 +3,29 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import '~simplebar/dist/simplebar.css';
 
+$color1-title: #C30000;
+$color2-title:#F29800;
+
 html,
 body {
-  font-family: Georgia;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url("/assets/images/gastronomie-background.png"), linear-gradient(to right, rgb(255, 239, 186)20%, rgb(255, 255, 255));
+  background-image: linear-gradient(to right, rgb(245, 213, 108)10%,white);
   background-repeat: no-repeat;
   background-position: 15% 15%;
 }
 
-// Globale variables
+.mat-flat-button{
+  background-color: $color2-title
+}
 
-$color1-title: #C30000;
-$color2-title:#F29800;
+.mat-form-field-label{
+  color: black
+}
 
 ul {
   padding: 0;
@@ -41,8 +47,8 @@ ul {
     li {
       min-height: 150px;
       padding: 2%;
-      background: rgba(228, 211, 181, 0.76);
-      border-radius: 5px;
+      background: rgba(228, 211, 181, 0.973);
+      border-radius: 10px;
       margin-bottom: 5px;
       text-align: center;
       font-weight: 600;

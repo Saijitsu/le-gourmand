@@ -14,4 +14,18 @@ export class RestaurantAddReviewComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  /* onSubmit() {
+    const email = this.signinForm.get('email').value;
+    const password = this.signinForm.get('password').value;
+
+    this.authService.signInUser(email, password).then(
+      () => {
+        this.router.navigate(['/games']);
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    );
+  } */
 }

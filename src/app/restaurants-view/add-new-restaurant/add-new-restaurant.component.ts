@@ -25,9 +25,7 @@ export class AddNewRestaurantComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-     // console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
-     // console.log('resto name:', this.restaurantName);
     });
   }
 
