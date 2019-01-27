@@ -1,18 +1,19 @@
-$color1-title: #C30000;
-$color2-title: #F29800;
+$color1-title: #eeeeee;
+$color2-title:#00adb5;
 
 mat-icon {
   color: $color2-title;
 }
 
 #star-selector {
-  background:  rgba(242, 153, 0, 0.952);
+  background: $color2-title;
   text-align: center;
-  border: 2px solid #222222;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 10px;
+  border: 2px solid $color1-title;
   padding: 2%;
+
+  h3 {
+    padding-top: 3px;
+  }
 
   mat-icon {
     color: $color1-title;

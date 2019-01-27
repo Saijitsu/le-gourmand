@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-restaurant-add-review',
@@ -9,23 +9,13 @@ import {FormControl, Validators} from '@angular/forms';
 
 export class RestaurantAddReviewComponent implements OnInit {
   public selectFormControl: any = new FormControl('', Validators.required); // Validate that the field is non-empty
+  public myForm: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  /* onSubmit() {
-    const email = this.signinForm.get('email').value;
-    const password = this.signinForm.get('password').value;
-
-    this.authService.signInUser(email, password).then(
-      () => {
-        this.router.navigate(['/games']);
-      },
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
-  } */
+  onSubmit() {
+  }
 }

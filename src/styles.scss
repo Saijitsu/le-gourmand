@@ -3,18 +3,20 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import '~simplebar/dist/simplebar.css';
 
-$color1-title: #C30000;
-$color2-title:#F29800;
+$color1-title: #eeeeee;
+$color2-title:#00adb5;
+$color3-title: #222831;
 
 html,
 body {
   font-family: 'Open Sans', sans-serif;
+  color: $color3-title;
   margin: 0;
   padding: 0;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, rgb(245, 213, 108)10%,white);
+  background-color: #dededf;
   background-repeat: no-repeat;
   background-position: 15% 15%;
 }
@@ -47,7 +49,7 @@ ul {
     li {
       min-height: 150px;
       padding: 2%;
-      background: rgba(228, 211, 181, 0.973);
+      background: $color1-title;
       border-radius: 10px;
       margin-bottom: 5px;
       text-align: center;

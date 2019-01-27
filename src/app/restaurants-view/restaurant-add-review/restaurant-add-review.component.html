@@ -1,4 +1,5 @@
 <div fxLayout="column" fxLayoutAlign="space-around center">
+  <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
   <mat-form-field class="author-name">
     <input matInput placeholder="Identifiez-vous!">
   </mat-form-field>
@@ -34,4 +35,6 @@
     </mat-error>
     <mat-hint>Notez ce restaurant ici!</mat-hint>
   </mat-form-field>
+  <button type="submit" mat-raised-button>Submit</button>
+</form>
 </div>

@@ -9,11 +9,11 @@
   <div fxLayout="row" fxLayoutAlign="space-around center">
     <div><img src={{restaurant.photo}} width="300" height="170"></div>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <div><img src="./assets/images/map-marker.png" width="18" height="22"></div>
+      <div><img src="./assets/images/map-marker.png" width="16" height="24"></div>
       <h3>{{restaurant.vinanityAdress}}</h3>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-evenly center">
+  <div fxLayout="row" fxLayoutAlign="space-evenly center" class="restaurant-button">
     <button mat-flat-button (click)="showReviews ? showReviews = false: showReviews = true; showAddReview = false;
     this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id)"
       id="showReviews{{restaurant.id}}">
