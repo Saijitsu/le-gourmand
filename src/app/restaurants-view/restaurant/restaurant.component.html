@@ -15,10 +15,9 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="space-evenly center" class="restaurant-button">
     <button mat-flat-button (click)="showReviews ? showReviews = false: showReviews = true; showAddReview = false;
-    this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id)"
-      id="showReviews{{restaurant.id}}">
+    this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id)">
       Consulter les avis</button>
-    <button mat-flat-button (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false" id="showAddReview{{restaurant.id}}">
+    <button mat-flat-button (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false">
       Ajouter un avis</button>
   </div>
   <div *ngIf="showReviews">
@@ -38,6 +37,6 @@
 
   </div>
   <div *ngIf="showAddReview">
-    <app-restaurant-add-review></app-restaurant-add-review>
+    <app-restaurant-add-review [index]="index"></app-restaurant-add-review>
   </div>
 </li>

@@ -1,59 +1,59 @@
 <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" id="star-selector">
   <h3>Sélection entre</h3>
-  <mat-select placeholder="Note" [(value)]="placeService.minValue" [(ngModel)]="placeService.minValue" (ngModelChange)="this.placeService.getCustomRestaurants()">
+  <mat-select placeholder="Note" [(value)]="placeService.minValue">
     <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
-        {{this.placeService.minValue}}
-        <div *ngIf="placeService.minValue === '0'">
+        {{'' + this.placeService.minValue}}
+        <div *ngIf="placeService.minValue === 0">
           <mat-icon>star_border</mat-icon>
         </div>
-        <div *ngIf="this.placeService.minValue !== '0'">
+        <div *ngIf="this.placeService.minValue !== 0">
           <mat-icon>star</mat-icon>
         </div>
       </span>
     </mat-select-trigger>
-    <mat-option value="0">0 étoile <mat-icon>star_border</mat-icon>
+    <mat-option [value]="0">0 étoile <mat-icon>star_border</mat-icon>
     </mat-option>
-    <mat-option value="1">1 étoile <mat-icon>star</mat-icon>
+    <mat-option [value]="1">1 étoile <mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="2">2 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="2">2 étoiles<mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="3">3 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="3">3 étoiles<mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="4">4 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="4">4 étoiles<mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="5">5 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="5">5 étoiles<mat-icon>star</mat-icon>
     </mat-option>
   </mat-select>
   <h3>&amp;</h3>
-  <mat-select placeholder="note" [(value)]="maxValue" [(ngModel)]="maxValue" (ngModelChange)="this.placeService.getCustomRestaurants()">
+  <mat-select placeholder="note" [(value)]="placeService.maxValue">
     <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
-        {{maxValue}}
-        <div *ngIf="this.maxValue === '0'">
+        {{'' + this.placeService.maxValue}}
+        <div *ngIf="this.placeService.maxValue === 0">
           <mat-icon>star_border</mat-icon>
         </div>
-        <div *ngIf="this.maxValue !== '0'">
+        <div *ngIf="this.placeService.maxValue !== 0">
           <mat-icon>star</mat-icon>
         </div>
       </span>
     </mat-select-trigger>
-    <mat-option value="0">0 étoile <mat-icon>star_border</mat-icon>
+    <mat-option [value]="0">0 étoile <mat-icon>star_border</mat-icon>
     </mat-option>
-    <mat-option value="1">1 étoile <mat-icon>star</mat-icon>
+    <mat-option [value]="1">1 étoile <mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="2">2 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="2">2 étoiles<mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="3">3 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="3">3 étoiles<mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="4">4 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="4">4 étoiles<mat-icon>star</mat-icon>
     </mat-option>
-    <mat-option value="5">5 étoiles<mat-icon>star</mat-icon>
+    <mat-option [value]="5">5 étoiles<mat-icon>star</mat-icon>
     </mat-option>
   </mat-select>
 </div>
 <ul class="groupe-list" fxFlex="100">
   <cdk-virtual-scroll-viewport itemSize="100%" data-simplebar>
-    <ng-container *ngFor="let restaurant of placeService.customRestaurants; let i = index">
-      <app-restaurant [restaurant]="placeService.customRestaurants[i]"></app-restaurant>
+    <ng-container *ngFor="let restaurant of placeService.restaurants; let i = index">
+      <app-restaurant *ngIf="placeService.isFiltered(restaurant.rating)" [restaurant]="placeService.restaurants[i]" [index]="i"></app-restaurant>
     </ng-container>
   </cdk-virtual-scroll-viewport>
 </ul>

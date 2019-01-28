@@ -16,12 +16,13 @@ export class PlaceService implements OnInit {
   public placesList: any = [];
   public clickLocation: LatLngLiteral;
   public previousInfoWindow: any;
-  public minValue: String = '0';
-  public maxValue: String = '5';
+  public minValue: Number = 0;
+  public maxValue: Number = 5;
 
   public markers = [];
   public restaurants = [];
   public customRestaurants = [];
+  public selectedRestaurant: any;
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
@@ -93,7 +94,6 @@ export class PlaceService implements OnInit {
             this.restaurants.push(addNewRestaurants);
           }
           console.log('this.restaurants:', this.restaurants);
-          this.getCustomRestaurants();
         }
       });
     }, (error) => {
@@ -139,12 +139,10 @@ export class PlaceService implements OnInit {
     });
   }
 
-  getCustomRestaurants() {
-  this.customRestaurants =
-  this.restaurants.filter(result => result.rating >= this.minValue && result.rating <= this.maxValue || result.rating === undefined);
-  console.log('restaurants are:', this.customRestaurants);
-  console.log('minValue are:', this.minValue);
-  console.log('maxValue are:', this.maxValue);
+  isFiltered(rating: number) {
+    const max: Number = Math.max(this.minValue.valueOf(), this.maxValue.valueOf());
+    const min: Number = Math.min(this.minValue.valueOf(), this.maxValue.valueOf());
+    return  rating >= min && rating <= max || rating === undefined;
   }
 }
 
@@ -164,4 +162,3 @@ export class Restaurant {
     public draggable: boolean = false,
     public animation: any = 'DROP') { }
 }
-

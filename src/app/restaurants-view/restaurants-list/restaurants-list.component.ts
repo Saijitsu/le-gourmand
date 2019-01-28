@@ -10,9 +10,9 @@ import 'simplebar';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-
+/*
   public minValue = this.placeService.minValue;
-  public maxValue = this.placeService.maxValue;
+  public maxValue = this.placeService.maxValue; */
 
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;

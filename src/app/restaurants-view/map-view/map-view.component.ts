@@ -73,7 +73,6 @@ export class MapViewComponent implements OnInit {
       'DROP' // animation:
     );
     this.placeService.restaurants.push(addNewRestaurants);
-    this.placeService.getCustomRestaurants();
     this.placeService.clickLocation = $event.coords;
     this.placeService.getMarkerAdress();
   }

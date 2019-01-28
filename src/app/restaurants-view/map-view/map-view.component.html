@@ -9,7 +9,8 @@
 (mapClick)="mapClicked($event)"
 [usePanning]="true"
 >
-  <agm-marker *ngFor="let m of placeService.customRestaurants; let i = index"
+<ng-container *ngFor="let m of placeService.restaurants; let i = index">
+<agm-marker *ngIf="placeService.isFiltered(m.rating)"
   [latitude]="m.latitude"
     [longitude]="m.longitude"
     [markerDraggable]="m.draggable"
@@ -19,16 +20,16 @@
     (mouseOver)="markerOver(m)"
     (mouseOut)="markerOut(m)"
     (markerClick)="clickedMarker(m.id, infoWindow)">
-    <agm-info-window #infoWindow>
+    <agm-info-window #infoWindow width="200"  height="140">
       <div fxLayout="column" fxLayoutAlign="space-around center">
         <strong>{{m.name}}</strong>
-        <img src={{m.photo}} width="150">
+        <img src={{m.photo}} width="150" height="85">
         <app-stars [rating]="m.rating"></app-stars>
       </div>
       <app-add-new-restaurant *ngIf="m.name === 'Nouveau Restaurant!'"></app-add-new-restaurant>
     </agm-info-window>
   </agm-marker>
-
+</ng-container>
   <agm-marker [latitude]="latitude"
   [longitude]="longitude"
   [label]="User"
