@@ -1,4 +1,3 @@
-// import { GoogleMap } from '@agm/core/services/google-maps-types';
 import { MapsAPILoader } from '@agm/core';
 import { PlaceService } from './services/place.service';
 import { Component, OnInit } from '@angular/core';

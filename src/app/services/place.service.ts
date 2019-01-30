@@ -21,7 +21,7 @@ export class PlaceService implements OnInit {
 
   public markers = [];
   public restaurants = [];
-  public customRestaurants = [];
+  public customRestaurants = []; // nécéssaire?
   public selectedRestaurant: any;
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
@@ -49,15 +49,15 @@ export class PlaceService implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         this.zoom = 15;
-        console.log('Votre position actuelle est :');
+        /* console.log('Votre position actuelle est :');
         console.log(`Latitude : ${position.coords.longitude}`);
         console.log(`Longitude : ${position.coords.latitude}`);
-        console.log(`La précision est de ${position.coords.accuracy} mètres.`);
+        console.log(`La précision est de ${position.coords.accuracy} mètres.`); */
       });
     }
   }
 
-  private getRestaurants() {
+  public getRestaurants() {
     return this.mapAPIloader.load().then(() => {
       const myDiv = <HTMLDivElement>document.createElement('div');
       const service = new google.maps.places.PlacesService(myDiv);
@@ -93,7 +93,7 @@ export class PlaceService implements OnInit {
             );
             this.restaurants.push(addNewRestaurants);
           }
-          console.log('this.restaurants:', this.restaurants);
+        /*   console.log('this.restaurants:', this.restaurants); */
         }
       });
     }, (error) => {
@@ -109,7 +109,10 @@ export class PlaceService implements OnInit {
       placeId: this.restaurants[restaurantIndex].placeId,
     }, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        this.restaurants[restaurantIndex].reviews.splice(0, this.restaurants[restaurantIndex].reviews.length, ...results.reviews);
+        this.restaurants[restaurantIndex].reviews.length === 0 ?
+        this.restaurants[restaurantIndex].reviews.splice(0, this.restaurants[restaurantIndex].reviews.length, ...results.reviews)
+        : this.restaurants[restaurantIndex].reviews.splice(1, 0, ...results.reviews);
+        console.log('this.restaurants[restaurantIndex].reviews', this.restaurants[restaurantIndex].reviews);
       }
     }, (error) => {
       console.log('Le chargement des données google places detail ne fonctionne pas:', error);

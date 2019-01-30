@@ -17,7 +17,8 @@
     <button mat-flat-button (click)="showReviews ? showReviews = false: showReviews = true; showAddReview = false;
     this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id)">
       Consulter les avis</button>
-    <button mat-flat-button (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false">
+    <button mat-flat-button (click)="showAddReview ? showAddReview = false: showAddReview = true; showReviews = false;
+    this.restaurantsListComponent.getRestaurantDetails(this.restaurant.id)">
       Ajouter un avis</button>
   </div>
   <div *ngIf="showReviews">
@@ -26,7 +27,7 @@
       <h1>L'avis des gourmands:</h1>
       <ng-container *ngFor="let review of (this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews)">
         <app-restaurant-review *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined"
-          [review]="review">
+          [review]="review" [@fadeInOut]>
         </app-restaurant-review>
       </ng-container>
     </div>
@@ -36,7 +37,7 @@
     </div>
 
   </div>
-  <div *ngIf="showAddReview">
+  <div *ngIf="showAddReview" [@fadeInOut]>
     <app-restaurant-add-review [index]="index"></app-restaurant-add-review>
   </div>
 </li>

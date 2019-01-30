@@ -42,7 +42,7 @@ const appRoutes: Routes = [
   { path: 'restaurants-view', component: RestaurantsViewComponent },
   { path: '', redirectTo: 'restaurants-view', pathMatch: 'full' },
   { path: 'not-found', component: FourOhFourComponent },
-  { path: '**', redirectTo: 'restaurants-view' }
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({

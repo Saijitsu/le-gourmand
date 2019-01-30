@@ -6,6 +6,7 @@ $color3-title: #222831;
   padding: 2px;
   background: white;
   border-radius: 10px;
+  margin-bottom: 2px;
 
   .profile {
 
@@ -37,12 +38,3 @@ $color3-title: #222831;
     }
   }
 }
-/*
-.review::after {
-  content: "";
-  height: 2px;
-  background: linear-gradient(to right, $color1-title 0%, $color2-title 50%, $color1-title 100%);
-  position: absolute;
-  width: 100%;
-}
- */

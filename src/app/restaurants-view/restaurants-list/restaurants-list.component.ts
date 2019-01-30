@@ -10,14 +10,14 @@ import 'simplebar';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-/*
-  public minValue = this.placeService.minValue;
-  public maxValue = this.placeService.maxValue; */
+  /*
+    public minValue = this.placeService.minValue;
+    public maxValue = this.placeService.maxValue; */
 
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
 
-// Array of reviews
+  // Array of reviews
   public reviews: Review[];
 
   constructor(public placeService: PlaceService) {
@@ -27,6 +27,10 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   getRestaurantDetails(restaurantIndex: number) {
-  this.placeService.getDetails(restaurantIndex);
+    console.log('restaurantIndex', restaurantIndex);
+    console.log('reviews', this.placeService.restaurants[restaurantIndex].reviews);
+    if (this.placeService.restaurants[restaurantIndex].reviews[0] === undefined) {
+      this.placeService.getDetails(restaurantIndex);
+    }
   }
 }

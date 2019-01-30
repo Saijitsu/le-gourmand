@@ -1,5 +1,5 @@
 import { PlaceService, Restaurant } from '../../services/place.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 import { RestaurantsViewComponent } from '../restaurants-view.component';
 
@@ -25,7 +25,8 @@ export class MapViewComponent implements OnInit {
 
   constructor(public placeService: PlaceService,
     public gMaps: GoogleMapsAPIWrapper,
-    public restaurantView: RestaurantsViewComponent) {
+    public restaurantView: RestaurantsViewComponent,
+    private ngZone: NgZone) {
   }
 
   ngOnInit() {
@@ -51,8 +52,8 @@ export class MapViewComponent implements OnInit {
     document.querySelector('#RestaurantId' + id).scrollIntoView();
     if (this.placeService.previousInfoWindow) {
       this.placeService.previousInfoWindow.close();
-      }
-      this.placeService.previousInfoWindow = infoWindow;
+    }
+    this.placeService.previousInfoWindow = infoWindow;
   }
 
   // Click to creat a new marker
@@ -77,6 +78,18 @@ export class MapViewComponent implements OnInit {
     this.placeService.getMarkerAdress();
   }
 
-  markerDragEnd(m: Restaurant, $event: MouseEvent) {
+  markerMoved($event: MouseEvent) {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'location': $event.coords }, (res, status) => {
+      if (status === google.maps.GeocoderStatus.OK && res.length) {
+        this.ngZone.run(() => this.setLocation(res[0])); } });
+      }
+
+  setLocation(place) {
+    this.placeService.latitude = place.geometry.location.lat();
+    this.placeService.longitude = place.geometry.location.lng();
+    this.placeService.placesList = [];
+    this.placeService.restaurants = [];
+    this.placeService.getRestaurants();
   }
 }

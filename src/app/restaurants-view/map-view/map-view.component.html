@@ -14,7 +14,6 @@
   [latitude]="m.latitude"
     [longitude]="m.longitude"
     [markerDraggable]="m.draggable"
-    (dragEnd)="markerDragEnd(m, $event)"
     [iconUrl]='{url: "./assets/images/map-marker.png", scaledSize: { width: 28, height: 42}}'
     [animation]="m.animation"
     (mouseOver)="markerOver(m)"
@@ -34,6 +33,8 @@
   [longitude]="longitude"
   [label]="User"
   [iconUrl]='{url: "./assets/images/current-location-marker.png", scaledSize: { width: 28, height: 32}}'
+  [markerDraggable]="true"
+  (dragEnd)="markerMoved($event)"
   >
     <agm-info-window>
       <strong>Vous êtes ici</strong>
