@@ -1,11 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="space-around center" class="review">
-  <div fxLayout="column" fxLayoutAlign="space-around none" class="review-contain" fxFlex="80">
+  <div fxLayout="column" fxLayoutAlign="space-around none" class="review-contain" fxFlex="100">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="rating-date">
-      <div fxLayout="row" fxLayoutAlign="start center" class="profile" fxFlex="20">
+      <div fxLayout="row" fxLayoutAlign="start center">
         <div><img class="profile-photo" src="{{review.profile_photo_url}}"></div>
         <h3 class="author-name">{{review.author_name}}</h3>
       </div>
-      <aside>
+      <aside fxLayout="row" fxLayoutAlign="end center">
         <p>{{review.relative_time_description}}</p>
         <div *ngIf="review?.rating">
           <app-stars [rating]="review.rating"></app-stars>
