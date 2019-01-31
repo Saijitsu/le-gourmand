@@ -7,25 +7,18 @@ $color3-title: #222831;
   background: white;
   border-radius: 10px;
   margin-bottom: 2px;
-
-  .profile {
-
-    .profile-photo {
-      max-width: 32;
-    }
+  max-width: 400;
 
     .author-name {
       font-size: 0.8em;
       font-weight: bolder;
     }
-  }
 
   .review-contain {
-    max-width: 400;
 
     .rating-date {
       p {
-        padding-left: 10%;
+        margin: 2px;
         font-size: 0.7em;
       }
     }
@@ -33,8 +26,12 @@ $color3-title: #222831;
     .text-review {
       background-color: $color1-title;
       padding: 1%;
-      border-radius: 15px;
+      border-radius: 10px;
       font-size: 0.8em;
     }
   }
+}
+
+.profile-photo {
+  width: 32px;
 }
