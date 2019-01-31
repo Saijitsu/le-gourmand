@@ -15,6 +15,7 @@ export class RestaurantAddReviewComponent implements OnInit {
   @Input() showReviews: Boolean;
   @Input() showAddReview: Boolean;
 
+  public selected: any;
   public authorName: string;
   public personnalReview: string;
   public personnalRating: number;

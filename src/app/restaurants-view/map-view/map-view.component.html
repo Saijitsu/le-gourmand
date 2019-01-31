@@ -31,7 +31,7 @@
 </ng-container>
   <agm-marker [latitude]="latitude"
   [longitude]="longitude"
-  [label]="User"
+  [label]="user"
   [iconUrl]='{url: "./assets/images/current-location-marker.png", scaledSize: { width: 28, height: 32}}'
   [markerDraggable]="true"
   (dragEnd)="markerMoved($event)"

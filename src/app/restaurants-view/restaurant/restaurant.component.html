@@ -1,16 +1,16 @@
-<li fxLayout="column" fxLayoutAlign="space-around none" id="RestaurantId{{restaurant.id}}">
+<li fxLayout="column" fxLayoutAlign="space-around none" id="RestaurantId{{this.restaurant.id}}">
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1 class="restaurant-name">{{restaurant.name}}</h1>
+    <h1 class="restaurant-name">{{this.restaurant.name}}</h1>
     <aside fxLayout="row" fxLayoutAlign="space-between center">
-      <app-stars [rating]="restaurant.rating"></app-stars>
-      <p *ngIf="this.restaurant.rating !== undefined" class="restaurant-rating">{{restaurant.rating}}/5</p>
+      <app-stars [rating]="this.restaurant.rating"></app-stars>
+      <p *ngIf="this.restaurant.rating !== undefined" class="restaurant-rating">{{this.restaurant.rating}}/5</p>
     </aside>
   </div>
   <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center">
-    <div><img src={{restaurant.photo}} class="restaurant-image"></div>
+    <div><img src={{this.restaurant.photo}} class="restaurant-image"></div>
     <div fxLayout="row" fxLayoutAlign="center center">
       <div><img src="./assets/images/map-marker.png" width="16" height="24"></div>
-      <h3 class="restaurant-adress">{{restaurant.vinanityAdress}}</h3>
+      <h3 class="restaurant-adress">{{this.restaurant.vinanityAdress}}</h3>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-evenly center" class="restaurant-button">

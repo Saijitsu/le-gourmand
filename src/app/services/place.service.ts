@@ -90,7 +90,6 @@ export class PlaceService implements OnInit {
             );
             this.restaurants.push(addNewRestaurants);
           }
-       console.log('this.restaurants:', this.restaurants);
         }
       });
     }, (error) => {

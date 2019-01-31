@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 import { RestaurantsViewComponent } from '../restaurants-view.component';
 
+declare let google: any;
+
 @Component({
   selector: 'app-map-view',
   templateUrl: './map-view.component.html',
@@ -14,11 +16,12 @@ export class MapViewComponent implements OnInit {
   @ViewChild(AgmMap) agmMap;
 
   // google maps zoom level
-  zoom: number;
+  public zoom: number;
 
   // initial center position for the map
-  latitude: number;
-  longitude: number;
+  public latitude: number;
+  public longitude: number;
+  public user: any;
 
   public markerLocation: any;
   public dialogResult = '';

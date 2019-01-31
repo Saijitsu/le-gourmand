@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-import { Restaurant, PlaceService } from './../../services/place.service';
+import { PlaceService } from './../../services/place.service';
 import { RestaurantsListComponent } from '../restaurants-list/restaurants-list.component';
 import { trigger, transition, animate, style, state } from '@angular/animations';
 
@@ -19,7 +19,7 @@ import { trigger, transition, animate, style, state } from '@angular/animations'
 
 export class RestaurantComponent implements OnInit {
 
-  @Input() restaurant: Restaurant[];
+  @Input() restaurant: any;
   @Input() index: Number;
   @Input() showReviews: Boolean = false;
   @Input() showAddReview: Boolean = false;
