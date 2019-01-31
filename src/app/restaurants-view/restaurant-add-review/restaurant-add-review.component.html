@@ -1,5 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="space-around center" class="user-review">
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-around center" class="user-review">
     <mat-form-field class="author-name">
       <input matInput placeholder="Identifiez-vous!" type="text" name="authorName" id="authorName" [(ngModel)]="authorName"
         required>
@@ -11,7 +10,7 @@
     </mat-form-field>
 
     <mat-form-field class="star-rating">
-      <mat-label><b> Votre note:</b></mat-label>
+      <mat-label><b>Ma note</b></mat-label>
       <mat-select placeholder="Votre avis" [(value)]="selected" name="personnalRating" id="personnalRating" [(ngModel)]="personnalRating"
         required>
         <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
@@ -40,4 +39,3 @@
     </mat-form-field>
     <div><button type="submit" mat-flat-button>Submit</button></div>
   </form>
-</div>

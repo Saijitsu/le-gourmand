@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="center center" fxFlex="100" id="star-selector">
+<div fxLayout="row" fxLayoutAlign="center center" fxFlex="36px" fxFlex.gt-xs="48px" id="star-selector">
   <h3>Sélection entre</h3>
   <mat-select placeholder="Note" [(value)]="placeService.minValue">
     <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
@@ -50,10 +50,15 @@
     </mat-option>
   </mat-select>
 </div>
-<ul class="groupe-list" fxFlex="100">
-  <cdk-virtual-scroll-viewport itemSize="100%" data-simplebar>
+<ul class="groupe-list" fxFlex="100" >
+  <cdk-virtual-scroll-viewport itemSize="100%" data-simplebar  fxShow.xs="false" fxShow="true">
     <ng-container *ngFor="let restaurant of placeService.restaurants; let i = index">
       <app-restaurant *ngIf="placeService.isFiltered(restaurant.rating)" [restaurant]="placeService.restaurants[i]" [index]="i"></app-restaurant>
     </ng-container>
   </cdk-virtual-scroll-viewport>
+  <cdk-virtual-scroll-viewport itemSize="100%" fxShow.xs="true" fxShow="false">
+      <ng-container *ngFor="let restaurant of placeService.restaurants; let i = index">
+        <app-restaurant *ngIf="placeService.isFiltered(restaurant.rating)" [restaurant]="placeService.restaurants[i]" [index]="i"></app-restaurant>
+      </ng-container>
+    </cdk-virtual-scroll-viewport>
 </ul>

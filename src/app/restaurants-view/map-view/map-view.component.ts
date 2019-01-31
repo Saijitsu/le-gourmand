@@ -60,15 +60,17 @@ export class MapViewComponent implements OnInit {
   mapClicked($event: MouseEvent) {
 
     const addNewRestaurants = new Restaurant(
-      this.placeService.customRestaurants.length, // id:
+      this.placeService.restaurants.length, // id:
       'Nouveau Restaurant!', // name:
       'Adresse à déterminer!', // vinanityAdress:
       $event.coords.lat, //  latitude:
       $event.coords.lng, // longitude:
       undefined, // rating:
       '1', // placeId:
-      '/assets/images/noPhoto.png', // photo:
-      '', // openingHours:
+      'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' +
+      $event.coords.lat + ',' +
+      $event.coords.lng +
+      '&fov=90&heading=235&pitch=5&key=AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',
       [], // reviews:
       true, // draggable:
       'DROP' // animation:

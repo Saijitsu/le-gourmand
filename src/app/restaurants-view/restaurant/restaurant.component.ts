@@ -29,6 +29,5 @@ export class RestaurantComponent implements OnInit {
     public placeService: PlaceService) { }
 
   ngOnInit() {
-    console.log('index:', this.index, 'showReviews=', this.showReviews, 'showAddReview=', this.showAddReview);
   }
 }

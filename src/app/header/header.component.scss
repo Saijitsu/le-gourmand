@@ -1,8 +1,9 @@
 $color1-title: #eeeeee;
 $color2-title:#00adb5;
 
-mat-toolbar{
+header {
   background: rgb(34, 34, 34);
+  min-height: 60;
 }
 
 h1 {
@@ -27,6 +28,7 @@ ul {
   li a {
     display: block;
     color: white;
+    font-size: 0.9em;
     padding-left: 1em;
     padding-right: 1em;
     text-align: center;
@@ -38,11 +40,17 @@ ul {
 
   li a:hover:not(.active) {
     background-color: $color2-title;
-    color:  rgb(34, 34, 34);
+    color: rgb(34, 34, 34);
     border-radius: 1em;
   }
 }
 
-mat-icon{
+mat-icon {
   padding-left: 4px
+}
+
+@media screen and (max-width: 640px) {
+  li a {
+    font-size: 0.7em !important;
+  }
 }

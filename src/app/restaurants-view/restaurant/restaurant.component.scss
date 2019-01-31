@@ -7,4 +7,34 @@ $color2-title:#00adb5;
 
 .restaurant-button {
   margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.restaurant-image {
+  width: 300px;
+  height: 170px
+}
+
+.restaurant-adress {
+  padding-left: 10px;
+  margin:0;
+}
+
+.restaurant-name {
+  margin:0;
+}
+
+@media screen and (max-width: 600px) {
+  .restaurant-adress {
+    font-size: 1em;
+  }
+
+  .restaurant-rating {
+    font-size: 0.8em;
+  }
+
+  .restaurant-image{
+    width: 200px;
+  height: 115px
+  }
 }

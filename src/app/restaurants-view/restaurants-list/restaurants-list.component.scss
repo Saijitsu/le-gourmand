@@ -19,3 +19,11 @@ mat-icon {
     color: $color1-title;
   }
 }
+
+@media screen and (max-width: 600px) {
+  h3 {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 0.8em;
+  }
+}

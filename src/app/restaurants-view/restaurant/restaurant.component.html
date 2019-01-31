@@ -1,16 +1,16 @@
 <li fxLayout="column" fxLayoutAlign="space-around none" id="RestaurantId{{restaurant.id}}">
   <div fxLayout="row" fxLayoutAlign="space-between center">
-    <h1>{{restaurant.name}}</h1>
+    <h1 class="restaurant-name">{{restaurant.name}}</h1>
     <aside fxLayout="row" fxLayoutAlign="space-between center">
       <app-stars [rating]="restaurant.rating"></app-stars>
       <p *ngIf="this.restaurant.rating !== undefined" class="restaurant-rating">{{restaurant.rating}}/5</p>
     </aside>
   </div>
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <div><img src={{restaurant.photo}} width="300" height="170"></div>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-around center">
+    <div><img src={{restaurant.photo}} class="restaurant-image"></div>
     <div fxLayout="row" fxLayoutAlign="center center">
       <div><img src="./assets/images/map-marker.png" width="16" height="24"></div>
-      <h3>{{restaurant.vinanityAdress}}</h3>
+      <h3 class="restaurant-adress">{{restaurant.vinanityAdress}}</h3>
     </div>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-evenly center" class="restaurant-button">
@@ -22,20 +22,17 @@
       Ajouter un avis</button>
   </div>
   <div *ngIf="showReviews">
-    <div *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews.lenght !== 0
-    && this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].placeId !== '1'">
-      <h1>L'avis des gourmands:</h1>
+    <div *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews.lenght === 0 ||
+      this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] === undefined">
+      <h1>Soyez le premier à laisser un avis!</h1>
+    </div>
+    <div *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews.lenght !== 0">
       <ng-container *ngFor="let review of (this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews)">
         <app-restaurant-review *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews[0] !== undefined"
           [review]="review" [@fadeInOut]>
         </app-restaurant-review>
       </ng-container>
     </div>
-    <div *ngIf="this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].reviews.lenght === 0 ||
-    this.restaurantsListComponent.placeService.restaurants[this.restaurant.id].placeId === '1'">
-      <h1>Soyez le premier à laisser un avis!</h1>
-    </div>
-
   </div>
   <div *ngIf="showAddReview" [@fadeInOut]>
     <app-restaurant-add-review [index]="index"></app-restaurant-add-review>

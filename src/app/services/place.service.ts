@@ -1,5 +1,5 @@
 import { Review } from './../restaurants-view/restaurant-reviews/restaurant-review.component';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit} from '@angular/core';
 import { MapsAPILoader, GoogleMapsAPIWrapper, LatLngLiteral } from '@agm/core';
 
 declare let google: any;
@@ -21,7 +21,6 @@ export class PlaceService implements OnInit {
 
   public markers = [];
   public restaurants = [];
-  public customRestaurants = []; // nécéssaire?
   public selectedRestaurant: any;
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
@@ -48,11 +47,11 @@ export class PlaceService implements OnInit {
         this.location = position.coords;
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        this.zoom = 15;
-        /* console.log('Votre position actuelle est :');
-        console.log(`Latitude : ${position.coords.longitude}`);
-        console.log(`Longitude : ${position.coords.latitude}`);
-        console.log(`La précision est de ${position.coords.accuracy} mètres.`); */
+        if (window.screen.width <= 600) {
+          this.zoom = 14;
+          } else {
+          this.zoom = 15;
+        }
       });
     }
   }
@@ -83,17 +82,15 @@ export class PlaceService implements OnInit {
               this.placesList[i].place_id,
               typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl()
-                : '/assets/images/noPhoto.png', // alternative photo secure
-              /*   : 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' +
+              : 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' +
                 this.placesList[i].geometry.location.lat() + ',' +
                 this.placesList[i].geometry.location.lng() +
-                '&fov=90&heading=235&pitch=5&key=AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets', */
-              this.placesList[i].opening_hours,
+                '&fov=90&heading=235&pitch=5&key=AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',
               []
             );
             this.restaurants.push(addNewRestaurants);
           }
-        /*   console.log('this.restaurants:', this.restaurants); */
+       console.log('this.restaurants:', this.restaurants);
         }
       });
     }, (error) => {
@@ -105,6 +102,7 @@ export class PlaceService implements OnInit {
   getDetails(restaurantIndex: number) {
     const myDiv = <HTMLDivElement>document.createElement('div');
     const service = new google.maps.places.PlacesService(myDiv);
+    console.log('this.restaurants[restaurantIndex].reviews', this.restaurants[restaurantIndex].reviews);
     service.getDetails({
       placeId: this.restaurants[restaurantIndex].placeId,
     }, (results, status) => {
@@ -131,7 +129,6 @@ export class PlaceService implements OnInit {
         if (results[0].formatted_address) {
           console.log('results[0].formatted_address:', results[0].formatted_address.toString());
           const addAdress: string = results[0].formatted_address.toString();
-          console.log('addAdress valeur:', addAdress);
           this.restaurants[this.restaurants.length - 1].vinanityAdress = addAdress;
         } else {
           console.log('No results found');
@@ -160,7 +157,6 @@ export class Restaurant {
     public rating: string,
     public placeId: string,
     public photo: any,
-    public openingHours: string,
     public reviews: Review[],
     public draggable: boolean = false,
     public animation: any = 'DROP') { }

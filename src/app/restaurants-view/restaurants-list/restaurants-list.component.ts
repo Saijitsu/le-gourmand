@@ -10,9 +10,6 @@ import 'simplebar';
   styleUrls: ['./restaurants-list.component.scss']
 })
 export class RestaurantsListComponent implements OnInit {
-  /*
-    public minValue = this.placeService.minValue;
-    public maxValue = this.placeService.maxValue; */
 
   @ViewChild(CdkVirtualScrollViewport)
   viewport: CdkVirtualScrollViewport;
@@ -27,8 +24,6 @@ export class RestaurantsListComponent implements OnInit {
   }
 
   getRestaurantDetails(restaurantIndex: number) {
-    console.log('restaurantIndex', restaurantIndex);
-    console.log('reviews', this.placeService.restaurants[restaurantIndex].reviews);
     if (this.placeService.restaurants[restaurantIndex].reviews[0] === undefined) {
       this.placeService.getDetails(restaurantIndex);
     }

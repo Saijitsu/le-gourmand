@@ -1,9 +1,9 @@
 <app-loading *ngIf="showSpinner" fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill=""></app-loading>
-<div *ngIf="showContent" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-around center" fxFlexFill="">
-  <section fxFlex="38">
+<div *ngIf="showContent" fxLayout="row" fxLayout.lt-lg="column-reverse" fxLayoutAlign="space-around center" fxFlexFill="">
+  <section fxFlex="61" fxFlex.gt-sm="39">
     <app-restaurants-list fxLayout="column"></app-restaurants-list>
   </section>
-  <aside fxFlex="58">
+  <aside fxFlex="36" fxFlex.gt-sm="58">
   <app-map-view></app-map-view>
   </aside>
 </div>
