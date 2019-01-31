@@ -31,7 +31,7 @@ export class RestaurantAddReviewComponent implements OnInit {
   onSubmit() {
     this.addNewReview = {
       author_name: this.authorName,
-      profile_photo_url: '/assets/images/user-image.png',
+      profile_photo_url: './assets/images/user-image.png',
       rating: this.personnalRating,
       relative_time_description: 'Aujourd\'hui',
       text: this.personnalReview
