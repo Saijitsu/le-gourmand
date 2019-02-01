@@ -13,7 +13,6 @@
 <agm-marker *ngIf="placeService.isFiltered(m.rating)"
   [latitude]="m.latitude"
     [longitude]="m.longitude"
-    [markerDraggable]="m.draggable"
     [iconUrl]='{url: "./assets/images/map-marker.png", scaledSize: { width: 28, height: 42}}'
     [animation]="m.animation"
     (mouseOver)="markerOver(m)"

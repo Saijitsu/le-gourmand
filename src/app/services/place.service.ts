@@ -1,5 +1,5 @@
 import { Review } from './../restaurants-view/restaurant-reviews/restaurant-review.component';
-import { Injectable, OnInit} from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { MapsAPILoader, GoogleMapsAPIWrapper, LatLngLiteral } from '@agm/core';
 
 declare let google: any;
@@ -49,7 +49,7 @@ export class PlaceService implements OnInit {
         this.longitude = position.coords.longitude;
         if (window.screen.width <= 600) {
           this.zoom = 14;
-          } else {
+        } else {
           this.zoom = 15;
         }
       });
@@ -82,7 +82,7 @@ export class PlaceService implements OnInit {
               this.placesList[i].place_id,
               typeof results[i].photos !== 'undefined' // Check the photo array is present for each
                 ? results[i].photos[0].getUrl()
-              : 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' +
+                : 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' +
                 this.placesList[i].geometry.location.lat() + ',' +
                 this.placesList[i].geometry.location.lng() +
                 '&fov=90&heading=235&pitch=5&key=AIzaSyCXoe_E_QM1YIjMO22IU28UCqX1HI7Uets',
@@ -101,15 +101,13 @@ export class PlaceService implements OnInit {
   getDetails(restaurantIndex: number) {
     const myDiv = <HTMLDivElement>document.createElement('div');
     const service = new google.maps.places.PlacesService(myDiv);
-    console.log('this.restaurants[restaurantIndex].reviews', this.restaurants[restaurantIndex].reviews);
     service.getDetails({
       placeId: this.restaurants[restaurantIndex].placeId,
     }, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         this.restaurants[restaurantIndex].reviews.length === 0 ?
-        this.restaurants[restaurantIndex].reviews.splice(0, this.restaurants[restaurantIndex].reviews.length, ...results.reviews)
-        : this.restaurants[restaurantIndex].reviews.splice(1, 0, ...results.reviews);
-        console.log('this.restaurants[restaurantIndex].reviews', this.restaurants[restaurantIndex].reviews);
+          this.restaurants[restaurantIndex].reviews.splice(0, this.restaurants[restaurantIndex].reviews.length, ...results.reviews)
+          : this.restaurants[restaurantIndex].reviews.splice(1, 0, ...results.reviews);
       }
     }, (error) => {
       console.log('Le chargement des données google places detail ne fonctionne pas:', error);
@@ -118,15 +116,10 @@ export class PlaceService implements OnInit {
 
   // Get adress on Clicked Location on map
   getMarkerAdress() {
-    console.log('this.restaurants:', this.restaurants,
-      'sélection du dernier elt:', this.restaurants[this.restaurants.length - 1],
-      'this.restaurants[this.restaurants.length - 1].vinanityAdress:', this.restaurants[this.restaurants.length - 1].vinanityAdress);
-
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ 'location': this.clickLocation }, (results, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         if (results[0].formatted_address) {
-          console.log('results[0].formatted_address:', results[0].formatted_address.toString());
           const addAdress: string = results[0].formatted_address.toString();
           this.restaurants[this.restaurants.length - 1].vinanityAdress = addAdress;
         } else {
@@ -141,7 +134,7 @@ export class PlaceService implements OnInit {
   isFiltered(rating: number) {
     const max: Number = Math.max(this.minValue.valueOf(), this.maxValue.valueOf());
     const min: Number = Math.min(this.minValue.valueOf(), this.maxValue.valueOf());
-    return  rating >= min && rating <= max || rating === undefined;
+    return rating >= min && rating <= max || rating === undefined;
   }
 }
 

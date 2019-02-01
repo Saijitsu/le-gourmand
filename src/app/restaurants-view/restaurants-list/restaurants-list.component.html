@@ -51,12 +51,12 @@
   </mat-select>
 </div>
 <ul class="groupe-list" fxFlex="100" >
-  <cdk-virtual-scroll-viewport itemSize="100%" data-simplebar  fxShow.xs="false" fxShow="true">
+  <cdk-virtual-scroll-viewport itemSize="100%" data-simplebar  fxShow.lt-lg="false" fxShow="true">
     <ng-container *ngFor="let restaurant of placeService.restaurants; let i = index">
       <app-restaurant *ngIf="placeService.isFiltered(restaurant.rating)" [restaurant]="placeService.restaurants[i]" [index]="i"></app-restaurant>
     </ng-container>
   </cdk-virtual-scroll-viewport>
-  <cdk-virtual-scroll-viewport itemSize="100%" fxShow.xs="true" fxShow="false">
+  <cdk-virtual-scroll-viewport itemSize="100%" fxShow.lt-lg="true" fxShow="false">
       <ng-container *ngFor="let restaurant of placeService.restaurants; let i = index">
         <app-restaurant *ngIf="placeService.isFiltered(restaurant.rating)" [restaurant]="placeService.restaurants[i]" [index]="i"></app-restaurant>
       </ng-container>

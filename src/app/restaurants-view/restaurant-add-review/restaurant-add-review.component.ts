@@ -36,7 +36,6 @@ export class RestaurantAddReviewComponent implements OnInit {
       relative_time_description: 'Aujourd\'hui',
       text: this.personnalReview
     };
-    console.log('this.index.valueOf()', this.index.valueOf());
     this.placeService.restaurants[this.index.valueOf()].reviews.push(this.addNewReview);
     // Update restaurant Rating:
     const arrayRating: number[] = [];
