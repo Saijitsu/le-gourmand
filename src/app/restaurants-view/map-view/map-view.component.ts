@@ -53,6 +53,7 @@ export class MapViewComponent implements OnInit {
   // Click to a marker
   clickedMarker(id, infoWindow) {
     document.querySelector('#RestaurantId' + id).scrollIntoView();
+    this.placeService.restaurants[id].showReviews = true;
     if (this.placeService.previousInfoWindow) {
       this.placeService.previousInfoWindow.close();
     }
