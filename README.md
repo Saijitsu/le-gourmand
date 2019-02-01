@@ -9,13 +9,12 @@ Anglais: code
 # Langagues/librairies/API/Divers
 
 TypeScript, Javascript (ES6), HTML5, SASS
-API GoogleMap, Streetview, Places, and more.
+API Google Maps, Street View, Places, and more.
 FireBase
 Angular flex-layout
 Angular Material
 Angular Animation, CDK (=> Scrolling module)
 AGM: Angular Google Map
-
 
 # Hébergement
 
