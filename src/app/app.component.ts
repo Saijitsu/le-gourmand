@@ -1,7 +1,9 @@
 import { MapsAPILoader } from '@agm/core';
 import { PlaceService } from './services/place.service';
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 
 @Component({
   selector: 'app-root',
