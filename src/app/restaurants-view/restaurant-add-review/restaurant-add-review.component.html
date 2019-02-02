@@ -1,41 +1,43 @@
-  <form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-around center" class="user-review">
-    <mat-form-field class="author-name">
-      <input matInput placeholder="Identifiez-vous!" type="text" name="authorName" id="authorName" [(ngModel)]="authorName"
-        required>
-    </mat-form-field>
+<form (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center center" class="user-review">
+  <mat-form-field class="author-name" appearance="outline">
+    <mat-label><b>Mon nom</b></mat-label>
+    <input matInput placeholder="Identifiez-vous!" type="text" name="authorName" id="authorName" [(ngModel)]="authorName"
+      required>
+  </mat-form-field>
 
-    <mat-form-field class="commentary">
-      <textarea matInput placeholder="Tapez votre commentaire ici!" type="text" name="personnalReview" id="personnalReview"
-        [(ngModel)]="personnalReview" required></textarea>
-    </mat-form-field>
+  <mat-form-field class="commentary" appearance="outline">
+    <mat-label><b>Mon avis</b></mat-label>
+    <textarea matInput placeholder="Tapez votre commentaire ici!" type="text" name="personnalReview" id="personnalReview"
+      [(ngModel)]="personnalReview" required></textarea>
+  </mat-form-field>
 
-    <mat-form-field class="star-rating">
-      <mat-label><b>Ma note</b></mat-label>
-      <mat-select placeholder="Votre avis" [(value)]="selected" name="personnalRating" id="personnalRating" [(ngModel)]="personnalRating"
-        required>
-        <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
-            {{selected}}
-            <div *ngIf="this.selected === '0'">
-              <mat-icon>star_border</mat-icon>
-            </div>
-            <div *ngIf="this.selected !== '0'">
-              <mat-icon>star</mat-icon>
-            </div>
-          </span>
-        </mat-select-trigger>
-        <mat-option [value]="0">0 étoile <mat-icon>star_border</mat-icon>
-        </mat-option>
-        <mat-option [value]="1">1 étoile <mat-icon>star</mat-icon>
-        </mat-option>
-        <mat-option [value]="2">2 étoiles<mat-icon>star</mat-icon>
-        </mat-option>
-        <mat-option [value]="3">3 étoiles<mat-icon>star</mat-icon>
-        </mat-option>
-        <mat-option [value]="4">4 étoiles<mat-icon>star</mat-icon>
-        </mat-option>
-        <mat-option [value]="5">5 étoiles<mat-icon>star</mat-icon>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div><button type="submit" mat-flat-button>Submit</button></div>
-  </form>
+  <mat-form-field class="star-rating" appearance="outline">
+    <mat-label><b>Ma note</b></mat-label>
+    <mat-select placeholder="Votre avis" [(value)]="selected" name="personnalRating" id="personnalRating" [(ngModel)]="personnalRating"
+      required>
+      <mat-select-trigger><span fxLayout="row" fxLayoutAlign="center center">
+          {{selected}}
+          <div *ngIf="this.selected === '0'">
+            <mat-icon>star_border</mat-icon>
+          </div>
+          <div *ngIf="this.selected !== '0'">
+            <mat-icon>star</mat-icon>
+          </div>
+        </span>
+      </mat-select-trigger>
+      <mat-option [value]="0">0 étoile <mat-icon>star_border</mat-icon>
+      </mat-option>
+      <mat-option [value]="1">1 étoile <mat-icon>star</mat-icon>
+      </mat-option>
+      <mat-option [value]="2">2 étoiles<mat-icon>star</mat-icon>
+      </mat-option>
+      <mat-option [value]="3">3 étoiles<mat-icon>star</mat-icon>
+      </mat-option>
+      <mat-option [value]="4">4 étoiles<mat-icon>star</mat-icon>
+      </mat-option>
+      <mat-option [value]="5">5 étoiles<mat-icon>star</mat-icon>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div><button type="submit" mat-flat-button>Submit</button></div>
+</form>
