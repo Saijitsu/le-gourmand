@@ -15,12 +15,6 @@ export class MapViewComponent implements OnInit {
 
   @ViewChild(AgmMap) agmMap;
 
-  // google maps zoom level
-  public zoom: number;
-
-  // initial center position for the map
-  public latitude: number;
-  public longitude: number;
   public user: any;
 
   public markerLocation: any;
@@ -33,11 +27,6 @@ export class MapViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.latitude = this.placeService.latitude;
-      this.longitude = this.placeService.longitude;
-      this.zoom = this.placeService.zoom;
-    }, 300);
   }
 
   // Marker Over

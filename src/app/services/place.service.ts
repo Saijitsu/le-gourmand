@@ -21,21 +21,15 @@ export class PlaceService implements OnInit {
 
   public markers = [];
   public restaurants = [];
-  public selectedRestaurant: any;
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
     this.zoom = 15;
-    this.latitude = 47.2632799;
+    this.latitude = 47.2633659;
     this.longitude = -1.5164536;
 
     // set current position
     this.setCurrentPosition();
-
-    // create the places list of restaurants
-    setTimeout(() => {
-      this.getRestaurants();
-    }, 200);
   }
 
   ngOnInit() {
@@ -52,6 +46,8 @@ export class PlaceService implements OnInit {
         } else {
           this.zoom = 15;
         }
+  // create the places list of restaurants
+        this.getRestaurants();
       }, (error) => {
         console.warn(`ERREUR (${error.code}): ${error.message}`);
       },
@@ -60,7 +56,7 @@ export class PlaceService implements OnInit {
         timeout: 5000,
         maximumAge: 0
       });
-    } else {
+     } else {
       alert('La Geolocation n\'est pas supportée par votre navigateur.');
     }
   }
