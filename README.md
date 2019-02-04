@@ -9,7 +9,7 @@ Anglais: code
 # Langagues/librairies/API/Divers
 
 TypeScript, Javascript (ES6), HTML5, SASS
-API Google Maps, Street View, Places, and more.
+API Google Maps, Street View, Places, Geocoding and more.
 FireBase
 Angular flex-layout
 Angular Material

@@ -52,7 +52,16 @@ export class PlaceService implements OnInit {
         } else {
           this.zoom = 15;
         }
+      }, (error) => {
+        console.warn(`ERREUR (${error.code}): ${error.message}`);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
       });
+    } else {
+      alert('La Geolocation n\'est pas supportée par votre navigateur.');
     }
   }
 
