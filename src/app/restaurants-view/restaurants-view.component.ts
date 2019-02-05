@@ -23,8 +23,8 @@ export class RestaurantsViewComponent implements OnInit {
         this.viewContent()
         : setTimeout(() =>  {
           this.viewContent();
-        }, 500);
-    }, 500);
+        }, 4000);
+    }, 1000);
   }
   viewContent() {
     this.showSpinner = false;

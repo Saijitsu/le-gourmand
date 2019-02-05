@@ -19,7 +19,6 @@ export class PlaceService implements OnInit {
   public minValue: Number = 0;
   public maxValue: Number = 5;
 
-  public markers = [];
   public restaurants = [];
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
@@ -85,7 +84,7 @@ export class PlaceService implements OnInit {
                 ? this.placesList[i].rating
                 : '0', // Rating of 0 if undefined,
               this.placesList[i].place_id,
-              typeof results[i].photos !== 'undefined' // Check the photo array is present for each
+              typeof results[i].photos !== 'undefined' // Check if the photo array is present for each
                 ? results[i].photos[0].getUrl()
                 : 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' +
                 this.placesList[i].geometry.location.lat() + ',' +
