@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone} from '@angular/core';
 import { PlaceService } from '../services/place.service';
 
 declare let google: any;
@@ -12,22 +12,13 @@ declare let google: any;
 export class RestaurantsViewComponent implements OnInit {
 
   public showSpinner: Boolean = true;
-  public showContent: Boolean = false;
-
-  constructor(public placeService: PlaceService) {
+  constructor(public placeService: PlaceService,
+    private ngZone: NgZone) {
+      this.placeService.initCallback = () => {
+        this.ngZone.run(() => this.showSpinner = false);
+      };
   }
 
   ngOnInit() {
- setTimeout(() => {
-      this.placeService.restaurants.length >= 1 ?
-        this.viewContent()
-        : setTimeout(() =>  {
-          this.viewContent();
-        }, 4000);
-    }, 1000);
-  }
-  viewContent() {
-    this.showSpinner = false;
-    this.showContent = true;
   }
 }

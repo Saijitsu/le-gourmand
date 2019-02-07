@@ -1,5 +1,5 @@
 <app-loading *ngIf="showSpinner" fxLayout="row" fxLayoutAlign="space-around center" fxFlexFill=""></app-loading>
-<div *ngIf="showContent" fxLayout="row" fxLayout.lt-lg="column-reverse" fxLayoutAlign="space-around center" fxFlexFill="">
+<div *ngIf="!showSpinner" fxLayout="row" fxLayout.lt-lg="column-reverse" fxLayoutAlign="space-around center" fxFlexFill="">
   <section fxFlex="36" fxFlex.lt-lg="58">
     <app-restaurants-list></app-restaurants-list>
   </section>

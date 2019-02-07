@@ -20,6 +20,7 @@ export class PlaceService implements OnInit {
   public maxValue: Number = 5;
 
   public restaurants = [];
+  public initCallback: () => void;
 
   constructor(public mapAPIloader: MapsAPILoader, public gMaps: GoogleMapsAPIWrapper) {
     // set google maps defaults
@@ -49,6 +50,7 @@ export class PlaceService implements OnInit {
         this.getRestaurants();
       }, (error) => {
         console.warn(`ERREUR (${error.code}): ${error.message}`);
+        this.initCallback();
       },
       {
         enableHighAccuracy: true,
@@ -95,6 +97,7 @@ export class PlaceService implements OnInit {
             this.restaurants.push(addNewRestaurants);
           }
         }
+        this.initCallback();
       });
     }, (error) => {
       console.log('Le chargement des données google places ne fonctionne pas:', error);
