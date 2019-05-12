@@ -7,7 +7,8 @@ import {
   MatInputModule,
   MatDialogModule,
   MatButtonModule,
-MatCardModule } from '@angular/material';
+  MatCardModule
+} from '@angular/material';
 import { PlaceService } from './services/place.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
   { path: 'restaurants-view', component: RestaurantsViewComponent },
-  { path: '', redirectTo: 'restaurants-view', pathMatch: 'full' },
+  { path: '', redirectTo: '/restaurants-view', pathMatch: 'full' },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

@@ -1,4 +1,5 @@
-import { PlaceService, Restaurant } from '../../services/place.service';
+import { Restaurant } from './../../../models/retaurant.model';
+import { PlaceService } from '../../services/place.service';
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { MouseEvent, AgmMap, GoogleMapsAPIWrapper } from '@agm/core';
 import { RestaurantsViewComponent } from '../restaurants-view.component';

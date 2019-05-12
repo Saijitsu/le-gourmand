@@ -22,10 +22,10 @@ Github Page
 
 # package version
 This project was generated with Angular CLI:
-Angular CLI: 7.1.4
-Node: 10.13.0
+Angular CLI: 7.3.9
+Node: 10.15.3
 OS: win32 x64
-Angular: 7.2.0
+Angular: 7.2.15
 ... animations, common, compiler, compiler-cli, core, forms
 ... http, language-service, platform-browser
 ... platform-browser-dynamic, router
@@ -33,21 +33,21 @@ Angular: 7.2.0
 Package                           Version
 -----------------------------------------------------------
 @angular-devkit/architect         0.12.2
-@angular-devkit/build-angular     0.12.2
-@angular-devkit/build-optimizer   0.12.2
-@angular-devkit/build-webpack     0.12.2
-@angular-devkit/core              7.1.4
-@angular-devkit/schematics        7.1.4
-@angular/cdk                      7.2.1
-@angular/cli                      7.1.4
+@angular-devkit/build-angular     0.13.9
+@angular-devkit/build-optimizer   0.13.9
+@angular-devkit/build-webpack     0.13.9
+@angular-devkit/core              7.3.9
+@angular-devkit/schematics        7.3.9
+@angular/cdk                      7.3.7
+@angular/cli                      7.3.9
 @angular/flex-layout              7.0.0-beta.22
-@angular/material                 7.2.1
-@ngtools/webpack                  7.2.2
-@schematics/angular               7.1.4
-@schematics/update                0.11.4
-rxjs                              6.3.3
-typescript                        3.2.2
-webpack                           4.28.4
+@angular/material                 7.3.7
+@ngtools/webpack                  7.3.9
+@schematics/angular               7.3.9
+@schematics/update                0.13.9
+rxjs                              6.5.2
+typescript                        3.2.4
+webpack                           4.29.0
 
 ## Development server
 

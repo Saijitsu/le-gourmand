@@ -1,4 +1,4 @@
-import { Review } from './../restaurants-view/restaurant-reviews/restaurant-review.component';
+import { Restaurant } from './../../models/retaurant.model';
 import { Injectable, OnInit } from '@angular/core';
 import { MapsAPILoader, GoogleMapsAPIWrapper, LatLngLiteral } from '@agm/core';
 
@@ -143,20 +143,4 @@ export class PlaceService implements OnInit {
     const min: Number = Math.min(this.minValue.valueOf(), this.maxValue.valueOf());
     return rating >= min && rating <= max || rating === undefined;
   }
-}
-
-// Create Restaurants Data
-export class Restaurant {
-  constructor(
-    public id: number,
-    public name: string,
-    public vinanityAdress: string,
-    public latitude: number,
-    public longitude: number,
-    public rating: string,
-    public placeId: string,
-    public photo: any,
-    public reviews: Review[],
-    public draggable: boolean = false,
-    public animation: any = 'DROP') { }
 }
